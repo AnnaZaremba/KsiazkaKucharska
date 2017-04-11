@@ -1,0 +1,33 @@
+{% block przepis %}
+    <div class="main" id="wrapper">
+        <div class="col-xs-10">
+            <div>
+                <h2>{{ przepis.nazwa }}</h2>
+            </div>
+            <div>
+                <h3>Składniki</h3>
+                <div>{{ przepis.skladniki|nl2br }}</div>
+            </div>
+            <div>
+                <h3>Wykonanie</h3>
+                <div class="text-justify text">{{ przepis.wykonanie|nl2br }}</div>
+            </div>
+            <div>
+                <h3>Źródło</h3>
+                <div>{{ przepis.zrodlo }}</div>
+            </div>
+            <div>
+                <h3>Uwagi</h3>
+                <div class="text-justify text">{{ przepis.uwagi|nl2br }}</div>
+            </div>
+            <div id="kategorie">
+                <h3>Kategorie</h3>
+                {% for kategoria in przepis.kategorie %}
+                    <div>
+                        <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

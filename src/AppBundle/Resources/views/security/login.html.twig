@@ -1,0 +1,27 @@
+{% extends '::ksiazkakucharska.html.twig' %}
+{% block container %}
+    {% block zdjecie %}
+        {% include('::zdjecie.html.twig') %}
+    {% endblock %}
+    <div class="main">
+        <div class="starter-template">
+            <h2>LOGOWANIE</h2>
+        </div>
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+        <div id="niskiePole">
+            <form action="{{ path('login') }}" method="post">
+                <h4>Nazwa</h4>
+                <input class="form-control" type="text" id="username" name="_username"/>
+                <h4>Hasło</h4>
+                <input class="form-control" type="password" id="password" name="_password"/>
+                <div>
+                    <h3>
+                        <button type="submit" class="btn btn-primary">Zaloguj</button>
+                    </h3>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

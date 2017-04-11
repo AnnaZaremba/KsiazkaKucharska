@@ -1,0 +1,36 @@
+{% extends '::ksiazkakucharska.html.twig' %}
+{% block container %}
+    {% block zdjecie %}
+        {% include('::zdjecie.html.twig') %}
+    {% endblock %}
+    <div class="main">
+        <div class="starter-template">
+            <h2>KONTAKT</h2>
+        </div>
+        {{ form_start(form, { 'attr': { 'novalidate': 'novalidate'}}) }}
+        <div>
+            <div>
+                <div id="niskiePole">
+                    <h4>Imię</h4>
+                    {{ form_widget(form.imie, {'attr': {'class': 'form-control'}}) }}
+                    <div style="color: red; ">{{ form_errors(form.imie) }}</div>
+                    <h4>E-mail</h4>
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                    <div style="color: red; ">{{ form_errors(form.email) }}</div>
+                    <h4>Temat</h4>
+                    {{ form_widget(form.temat, {'attr': {'class': 'form-control'}}) }}
+                    <div style="color: red; ">{{ form_errors(form.temat) }}</div>
+                </div>
+                <h4>Wiadomość</h4>
+                {{ form_widget(form.wiadomosc, {'attr': {'class': 'form-control'}}) }}
+                <div style="color: red; ">{{ form_errors(form.wiadomosc) }}</div>
+            </div>
+            <div>
+                <h3>
+                    <button type="submit" class="btn btn-primary">Wyślij wiadomość</button>
+                </h3>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
