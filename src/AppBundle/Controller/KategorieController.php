@@ -7,12 +7,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class KsiazkaKucharskaKategorieController
+ * Class KategorieController
  * @package AppBundle\Controller
  *
- * @Route("/ksiazkakucharska/kategorie")
+ * @Route("/kategorie")
  */
-class KsiazkaKucharskaKategorieController extends Controller
+class KategorieController extends Controller
 {
     /**
      * @Route("/{id}", name="kategoriaid", requirements={"id": "\d+"})

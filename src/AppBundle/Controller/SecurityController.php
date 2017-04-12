@@ -11,7 +11,6 @@ use Symfony\Component\HttpFoundation\Request;
 /**
  * Class SecurityController
  * @package AppBundle\Controller
- * @Route("/ksiazkakucharska")
  */
 class SecurityController extends Controller
 {
@@ -25,7 +24,7 @@ class SecurityController extends Controller
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        return $this->render('@App/security/login.html.twig', array(
+        return $this->render('@App/Security/login.html.twig', array(
             'error' => $error,
             'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
         ));

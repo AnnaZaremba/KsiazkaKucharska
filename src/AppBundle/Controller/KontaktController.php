@@ -12,15 +12,15 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class KsiazkaKucharskaPrzepisyController
+ * Class KontaktController
  * @package AppBundle\Controller
  *
- * @Route("/ksiazkakucharska")
+ * @Route("/")
  */
-class KsiazkaKucharskaKontaktController extends Controller
+class KontaktController extends Controller
 {
     /**
-     * @Route("/kontakt", name="ksiazkakucharskakontakt")
+     * @Route("/kontakt", name="kontakt")
      * @Template()
      */
     public function kontaktAction(Request $request)
@@ -48,7 +48,7 @@ class KsiazkaKucharskaKontaktController extends Controller
             $em->persist($kontaktBaza);
             $em->flush();
 
-            return $this->redirectToRoute('kontaktmailwyslany');
+            return $this->redirectToRoute('mailwyslany');
         }
 
         $find = $this->getDoctrine()
@@ -67,10 +67,10 @@ class KsiazkaKucharskaKontaktController extends Controller
     /**
      * @return array
      *
-     * @Route("/kontaktmailwyslany", name="kontaktmailwyslany")
+     * @Route("/mailwyslany", name="mailwyslany")
      * @Template()
      */
-    public function kontaktMailWyslanyAction()
+    public function mailWyslanyAction()
     {
         return [
             'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName()

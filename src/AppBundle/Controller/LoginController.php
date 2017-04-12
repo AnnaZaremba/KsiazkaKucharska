@@ -7,11 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class KsiazkaKucharskaLoginController
+ * Class LoginController
  * @package AppBundle\Controller
- * @Route("/ksiazkakucharska")
  */
-class KsiazkaKucharskaLoginController extends Controller
+class LoginController extends Controller
 {
     /**
      * @Route("/admin", name="admin")
@@ -19,7 +18,7 @@ class KsiazkaKucharskaLoginController extends Controller
      */
     public function zalogowanyAction()
     {
-        return $this->render('@App/KsiazkaKucharskaLogin/zalogowany.html.twig', array(
+        return $this->render('@App/Login/zalogowany.html.twig', array(
             'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
         ));
     }

@@ -13,15 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class KsiazkaKucharskaPrzepisyController
+ * Class DodajPrzepisController
  * @package AppBundle\Controller
- *
- * @Route("/ksiazkakucharska/dodajprzepis")
  */
-class KsiazkaKucharskaDodajPrzepiController extends Controller
+class DodajPrzepisController extends Controller
 {
     /**
-     * @Route("/", name="dodajprzepis")
+     * @Route("/dodajprzepis", name="dodajprzepis")
      * @Template()
      */
     public function dodajPrzepisAction(Request $request)
@@ -72,7 +70,7 @@ class KsiazkaKucharskaDodajPrzepiController extends Controller
 
         (new PrzepiRepository($this->getDoctrine()->getManager()))->delete($id);
 
-        return $this->render('@App/KsiazkaKucharskaDodajPrzepi/PrzepisUsuniety.html.twig', array(
+        return $this->render('@App/DodajPrzepis/PrzepisUsuniety.html.twig', array(
             'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
             'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
         ));
@@ -109,7 +107,7 @@ class KsiazkaKucharskaDodajPrzepiController extends Controller
 
             (new PrzepiRepository($this->getDoctrine()->getManager()))->update($przepis);
 
-            return $this->render('@App/KsiazkaKucharskaDodajPrzepi/PrzepisZedytowany.html.twig', array(
+            return $this->render('@App/DodajPrzepis/PrzepisZedytowany.html.twig', array(
                 'form' => $form->createView(),
                 'isValid' => $form->isValid(),
                 'przepis' => $przepis,
@@ -122,7 +120,7 @@ class KsiazkaKucharskaDodajPrzepiController extends Controller
             ->getRepository('AppBundle:Przepis')
             ->findAll();
 
-        return $this->render('@App/KsiazkaKucharskaDodajPrzepi/edytujPrzepis.html.twig', array(
+        return $this->render('@App/DodajPrzepis/edytujPrzepis.html.twig', array(
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'przepis' => $przepis,

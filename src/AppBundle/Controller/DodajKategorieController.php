@@ -11,15 +11,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class KsiazkaKucharskaPrzepisyController
+ * Class DodajKategorieController
  * @package AppBundle\Controller
- *
- * @Route("/ksiazkakucharska/dodajkategorie")
  */
-class KsiazkaKucharskaDodajKategorieController extends Controller
+class DodajKategorieController extends Controller
 {
     /**
-     * @Route("/", name="dodajkategorie")
+     * @Route("/dodajkategorie", name="dodajkategorie")
      * @Template()
      */
     public function dodajKategorieAction(Request $request)
@@ -71,7 +69,7 @@ class KsiazkaKucharskaDodajKategorieController extends Controller
 
         (new KategoriaRepository($this->getDoctrine()->getManager()))->delete($id);
 
-        return $this->render('@App/KsiazkaKucharskaDodajKategorie/kategoriaUsunieta.html.twig', array(
+        return $this->render('@App/DodajKategorie/kategoriaUsunieta.html.twig', array(
             'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
         ));
     }
@@ -103,7 +101,7 @@ class KsiazkaKucharskaDodajKategorieController extends Controller
 
             (new KategoriaRepository($this->getDoctrine()->getManager()))->update($kategoria);
 
-            return $this->render('@App/KsiazkaKucharskaDodajKategorie/kategoriaZedytowana.html.twig', array(
+            return $this->render('AppBundle:DodajKategorie:kategoriaZedytowana.html.twig', array(
                 'form' => $form->createView(),
                 'isValid' => $form->isValid(),
                 'kategoria' => $kategoria,
@@ -115,7 +113,7 @@ class KsiazkaKucharskaDodajKategorieController extends Controller
             ->getRepository('AppBundle:Kategoria')
             ->findAll();
 
-        return $this->render('@App/KsiazkaKucharskaDodajKategorie/edytujKategorie.html.twig', array(
+        return $this->render('@App/DodajKategorie/edytujKategorie.html.twig', array(
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'kategoria' => $kategoria,
