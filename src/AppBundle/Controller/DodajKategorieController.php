@@ -61,7 +61,7 @@ class DodajKategorieController extends Controller
     }
 
     /**
-     * @Route("/usun", name="usunkategorie")
+     * @Route("/usunkategorie", name="usunkategorie")
      */
     public function deleteAction(Request $request)
     {
@@ -75,7 +75,7 @@ class DodajKategorieController extends Controller
     }
 
     /**
-     * @Route("/edytuj", name="edytujkategorie")
+     * @Route("/edytujkategorie", name="edytujkategorie")
      */
     public function editAction(Request $request)
     {

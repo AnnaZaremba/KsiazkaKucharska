@@ -62,7 +62,7 @@ class DodajPrzepisController extends Controller
     }
 
     /**
-     * @Route("/usun", name="usunprzepis")
+     * @Route("/usunprzepis", name="usunprzepis")
      */
     public function deleteAction(Request $request)
     {
@@ -77,7 +77,7 @@ class DodajPrzepisController extends Controller
     }
 
     /**
-     * @Route("/edytuj", name="edytujprzepis")
+     * @Route("/edytujprzepis", name="edytujprzepis")
      */
     public function editAction(Request $request)
     {
