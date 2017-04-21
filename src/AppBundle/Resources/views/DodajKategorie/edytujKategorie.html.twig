@@ -2,19 +2,21 @@
 {% block container %}
     <div class="main">
         <div class="starter-template">
-            <h2>EDYTUJ KATEGORIĘ</h2>
+            <h2>DODAJ KATEGORIĘ</h2>
         </div>
         {{ form_start(form, { 'attr': { 'novalidate': 'novalidate'}}) }}
         <div>
-            <div>
-                {{ form_widget(form.nazwa, {'attr': {'placeholder': 'Nazwa *', 'class': 'form-control'}}) }}
-                <div style="color: red; ">{{ form_errors(form.nazwa) }}</div>
-                {{ form_widget(form.image, {'attr': {'placeholder': 'Zdjęcie *', 'class': 'form-control'}}) }}
-                <div style="color: red; ">{{ form_errors(form.image) }}</div>
+            <div id="niskiePole">
+                <h4>Nazwa</h4>
+                {{ form_widget(form.nazwa, {'attr': {'class': 'form-control'}}) }}
+                <div id="blad">{{ form_errors(form.nazwa) }}</div>
+                <h4>Zdjęcie</h4>
+                {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                <div id="blad">{{ form_errors(form.image) }}</div>
             </div>
             <div>
                 <h3>
-                    <button type="submit" class="btn btn-primary btn-sm">Edytuj kategorie</button>
+                    <button type="submit" class="btn btn-primary">Dodaj kategorie</button>
                 </h3>
             </div>
             {{ form_end(form) }}

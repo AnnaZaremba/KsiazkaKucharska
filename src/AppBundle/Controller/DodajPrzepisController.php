@@ -31,7 +31,7 @@ class DodajPrzepisController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
 
             (new PrzepiRepository($this->getDoctrine()->getManager()))->save($przepis);
-            return $this->redirectToRoute('przepisdodany');
+            return $this->redirectToRoute('dodajprzepis');
         }
 
         $find = $this->getDoctrine()
@@ -48,20 +48,6 @@ class DodajPrzepisController extends Controller
     }
 
     /**
-     * @return array
-     *
-     * @Route("/przepisdodany", name="przepisdodany")
-     * @Template()
-     */
-    public function przepisDodanyAction()
-    {
-        return [
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-        ];
-    }
-
-    /**
      * @Route("/usunprzepis", name="usunprzepis")
      */
     public function deleteAction(Request $request)
@@ -70,10 +56,7 @@ class DodajPrzepisController extends Controller
 
         (new PrzepiRepository($this->getDoctrine()->getManager()))->delete($id);
 
-        return $this->render('@App/DodajPrzepis/PrzepisUsuniety.html.twig', array(
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-        ));
+        return $this->redirectToRoute('dodajprzepis');
     }
 
     /**
@@ -107,13 +90,7 @@ class DodajPrzepisController extends Controller
 
             (new PrzepiRepository($this->getDoctrine()->getManager()))->update($przepis);
 
-            return $this->render('@App/DodajPrzepis/PrzepisZedytowany.html.twig', array(
-                'form' => $form->createView(),
-                'isValid' => $form->isValid(),
-                'przepis' => $przepis,
-                'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-                'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            ));
+            return $this->redirectToRoute('dodajprzepis');
         }
 
         $dane = $this->getDoctrine()

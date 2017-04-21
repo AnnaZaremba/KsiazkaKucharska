@@ -31,7 +31,7 @@ class DodajKategorieController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             (new KategoriaRepository($this->getDoctrine()->getManager()))->save($kategoria);
 
-            return $this->redirectToRoute('kategoriadodana');
+            return $this->redirectToRoute('dodajkategorie');
         }
 
         $find = $this->getDoctrine()
@@ -48,19 +48,6 @@ class DodajKategorieController extends Controller
     }
 
     /**
-     * @return array
-     *
-     * @Route("/kategoriadodana", name="kategoriadodana")
-     * @Template()
-     */
-    public function kategoriaDodanaAction()
-    {
-        return [
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName()
-        ];
-    }
-
-    /**
      * @Route("/usunkategorie", name="usunkategorie")
      */
     public function deleteAction(Request $request)
@@ -69,9 +56,7 @@ class DodajKategorieController extends Controller
 
         (new KategoriaRepository($this->getDoctrine()->getManager()))->delete($id);
 
-        return $this->render('@App/DodajKategorie/kategoriaUsunieta.html.twig', array(
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-        ));
+        return $this->redirectToRoute('dodajkategorie');
     }
 
     /**
@@ -101,12 +86,7 @@ class DodajKategorieController extends Controller
 
             (new KategoriaRepository($this->getDoctrine()->getManager()))->update($kategoria);
 
-            return $this->render('AppBundle:DodajKategorie:kategoriaZedytowana.html.twig', array(
-                'form' => $form->createView(),
-                'isValid' => $form->isValid(),
-                'kategoria' => $kategoria,
-                'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            ));
+            return $this->redirectToRoute('dodajkategorie');
         }
 
         $dane = $this->getDoctrine()

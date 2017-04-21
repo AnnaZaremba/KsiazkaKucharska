@@ -11,27 +11,27 @@
                     <div id="niskiePole">
                     <h4>Nazwa</h4>
                     {{ form_widget(form.nazwa, {'attr': {'class': 'form-control'}}) }}
-                    <div style="color: red; ">{{ form_errors(form.nazwa) }}</div>
+                    <div id="blad">{{ form_errors(form.nazwa) }}</div>
                     </div>
                     <h4>Składniki</h4>
                     {{ form_widget(form.skladniki, {'attr': {'class': 'form-control'}}) }}
-                    <div style="color: red; ">{{ form_errors(form.skladniki) }}</div>
+                    <div id="blad">{{ form_errors(form.skladniki) }}</div>
                     <h4>Wykonanie</h4>
                     {{ form_widget(form.wykonanie, {'attr': {'class': 'form-control'}}) }}
-                    <div style="color: red; ">{{ form_errors(form.wykonanie) }}</div>
+                    <div id="blad">{{ form_errors(form.wykonanie) }}</div>
                     <div id="niskiePole">
                     <h4>Źródło</h4>
                     {{ form_widget(form.zrodlo, {'attr': {'class': 'form-control'}}) }}
-                    <div style="color: red; ">{{ form_errors(form.zrodlo) }}</div>
+                    <div id="blad">{{ form_errors(form.zrodlo) }}</div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <h4>Uwagi</h4>
                     {{ form_widget(form.uwagi, {'attr': {'class': 'form-control'}}) }}
-                    <div style="color: red; ">{{ form_errors(form.uwagi) }}</div>
+                    <div id="blad">{{ form_errors(form.uwagi) }}</div>
                    <div id="dodajPrzepisKategorie"><h4>Kategorie</h4>
                     {{ form_widget(form.kategorie, {'attr': { 'class': 'form-control'}}) }}
-                    <div style="color: red;">{{ form_errors(form.kategorie) }}</div>
+                    <div id="blad">{{ form_errors(form.kategorie) }}</div>
                    </div>
                 </div>
             </div>
