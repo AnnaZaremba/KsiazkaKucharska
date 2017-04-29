@@ -6,24 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="{{ asset('public/twig/favicon.ico') }}">
+    <meta name="Anna Zaremba" content="">
 
     <title>Książka kucharska</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('public/bootstrap/3.3.7/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/bootstrap 3.3.7/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}"/>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{{ asset('public/twig/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="{{ asset('css/ksiazkakucharska.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/bootstrap 3.3.7/docs/assets/ie10-viewport-bug-workaround.css') }}"
+          rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]>
-    <script src="{{ asset('public/twig/ie8-responsive-file-warning.js') }}"></script><![endif]-->
-    <script src="{{ asset('public/twig/ie-emulation-modes-warning.js') }}"></script>
+    <script src="{{ asset('public/bootstrap 3.3.7/docs/assets/js/ie8-responsive-file-warning.js') }}"></script>
+    <![endif]-->
+    <script src="{{ asset('public/bootstrap 3.3.7/docs/assets/js/ie-emulation-modes-warning.js') }}"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -34,39 +33,60 @@
 
 <body>
 
-<nav class="navbar navbar-inverse navbar-fixed-top" id="nazwaStrony">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Książka kucharska</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{ path('ksiazkakucharska') }}"><h3>Ksiażka kucharska</h3></a>
+<!-- Fixed navbar -->
+<div id="nawigacja">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{ path('ksiazkakucharska') }}">Książka kucharska</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ path('omnie') }}">O mnie</a></li>
+                    <li><a href="{{ path('okuchni') }}">O kuchni</a></li>
+                    <li><a href="{{ path('kontakt') }}">Kontakt</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Kategorie<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% for kategoria in kategorie %}
+                                <li>
+                                    <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa|upper }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ path('admin') }}">Moje konto</a></li>
+                </ul>
+            </div>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('ksiazkakucharska') }}">Start</a></li>
-                <li><a href="{{ path('omnie') }}">O mnie</a></li>
-                <li><a href="{{ path('okuchni') }}">O kuchni</a></li>
-                <li><a href="{{ path('kontakt') }}">Kontakt</a></li>
-                <li><a href="{{ path('admin') }}">Moje konto</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </nav>
+</div>
 <div class="row">
-    <div class="col-md-2">
-        {% block menu %}
-            {% include('::menu.html.twig') %}
-        {% endblock %}
-    </div>
-    <div class="col-md-10">
-        {% block container %}
-        {% endblock %}
-    </div>
+    {% block zdjecie %}
+        {% include('::zdjecie.html.twig') %}
+    {% endblock %}
+</div>
+<div class="row">
+    {% block container %}
+    {% endblock %}
+</div>
+
+<div id="stopka">
+    <footer class="footer">
+        <div class="container">
+            <div class="text-muted">Copyright &copy; <a href="{{ path('omnie') }}">Anna Zaremba</a> 2017</div>
+        </div>
+    </footer>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -74,12 +94,8 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="{{ asset('public/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="{{ asset('public/twig/holder.min.js') }}"></script>
+<script src="{{ asset('public/bootstrap 3.3.7/dist/js/bootstrap.min.js') }}"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="{{ asset('public/twig/ie10-viewport-bug-workaround.js') }}"></script>
-{# nasze skrypty #}
-<script src="{{ asset('js/ksiazka_kucharska.js') }}"></script>
+<script src="{{ asset('public/bootstrap 3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js') }}"></script>
 </body>
 </html>

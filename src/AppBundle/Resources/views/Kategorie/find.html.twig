@@ -1,6 +1,20 @@
 {% extends '::ksiazkakucharska.html.twig' %}
 {% block container %}
-    {% block przepisKategoria %}
-        {% include('::przepisKategoria.html.twig') %}
-    {% endblock %}
+    <div class="row">
+        <div class="col-md-2">
+            <div>
+                <h2>{{ kategoria.nazwa }}</h2>
+                <div id="lista">
+                    <ul class="list-unstyled">
+                        {% for przepis in przepisy %}
+                            <h4><a href="{{ path('przepisid', { 'id': przepis.id }) }}">{{ przepis.nazwa }}</a></h4>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% block przepisKategoria %}
+            {% include('::przepisy.html.twig') %}
+        {% endblock %}
+    </div>
 {% endblock %}

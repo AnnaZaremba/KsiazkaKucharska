@@ -1,5 +1,6 @@
-{% block przepis %}
-    <div class="row" id="przepis">
+{% block przepisy %}
+<div class="col-md-10" id="przepis">
+    {% for przepis in przepisy %}
         <div class="row">
             <h2>{{ przepis.nazwa }}</h2>
         </div>
@@ -17,7 +18,7 @@
         </div>
         <div class="row">
             <h3>Uwagi</h3>
-            <div class="text-justify text">{{ przepis.uwagi|nl2br }}</div>
+            <h4>{{ przepis.uwagi|nl2br }}</h4>
         </div>
         <div class="row">
             <h3>Kategorie</h3>
@@ -27,5 +28,6 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
+    {% endfor %}
+</div>
 {% endblock %}

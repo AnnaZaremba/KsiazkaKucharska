@@ -1,14 +1,17 @@
 {% extends '::ksiazkakucharska.html.twig' %}
 {% block container %}
-    {% block zdjecie %}
-        {% include('::zdjecie.html.twig') %}
-    {% endblock %}
-    <div class="main">
-        <div class="starter-template">
-            <h1>O MNIE</h1>
-            <p class="lead">
-                W związku z tym, że przecież trzeba coś jeść, czasami zamykam się w kuchni i czaruję.<br>
-            </p>
+    <div class="container">
+        <div class="row" id="o_mnie">
+            <h2>O mnie</h2>
+            <h3>Ważne sa tylko te dni, których nie znamy</h3>
+            <div id="zdjecie_profilowe">
+                <img src="{{ asset('images/aniazarem.jpg') }}" class="img-thumbnail"/>
+            </div>
+            <div>
+                <h4>
+                    W związku z tym, że przecież trzeba coś jeść, czasami zamykam się w kuchni i czaruję.
+                </h4>
+            </div>
         </div>
     </div>
 {% endblock %}
