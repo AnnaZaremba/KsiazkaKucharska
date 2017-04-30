@@ -1,0 +1,126 @@
+/*********************************************************************************/
+/* Nawigacja                                                                     */
+/*********************************************************************************/
+
+#nawigacja .navbar-default .navbar-brand {
+    color: #555555;
+}
+
+#nawigacja .navbar-default .navbar-nav > li > a {
+    color: #555555;
+}
+
+#nawigacja .navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0;
+    border: 1px solid transparent;
+}
+
+#kategoria_xs .navbar-default {
+    background-color: transparent;
+    border-color: #e7e7e7;
+}
+/*********************************************************************************/
+/* Container                                                                     */
+/*********************************************************************************/
+
+.row {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#o_mnie h2,
+#o_mnie h3,
+#o_mnie h4 {
+    text-align: center;
+}
+
+/*********************************************************************************/
+/* Formularz                                                                     */
+/*********************************************************************************/
+
+#formularz {
+
+}
+
+#formularz label {
+    margin-top: 25px;
+}
+
+#blad {
+    color: #aa0000;
+}
+
+#przycisk {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#dodajKategorie .form-control {
+    height: auto;
+    padding: 5px;
+    text-align: center;
+}
+
+#dodajKategorie label {
+    margin: 10px;
+}
+
+/*********************************************************************************/
+/* Zdjęcia                                                                       */
+/*********************************************************************************/
+
+#zdjecie_profilowe {
+    text-align: center;
+}
+
+/*********************************************************************************/
+/* Lista                                                                         */
+/*********************************************************************************/
+
+#lista a {
+    color: #555555;
+}
+
+#lista ol,
+#lista ul {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+#lista li {
+    margin-top: 10px;
+}
+
+/*********************************************************************************/
+/* Treść                                                                         */
+/*********************************************************************************/
+
+#przepis a {
+    color: #555555;
+}
+
+#przepis h2 {
+    color: #74221d;
+}
+
+/*********************************************************************************/
+/* Stopka                                                                        */
+/*********************************************************************************/
+
+#stopka .footer {
+    margin-top: 100px;
+    padding-top: 20px;
+    position: static;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #eee;
+}
+
+#stopka a {
+    color: #555555;
+    text-decoration: none;
+}
