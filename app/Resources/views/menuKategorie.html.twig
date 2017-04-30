@@ -1,0 +1,34 @@
+{% block menuKategorie %}
+<div class="col-md-2" id="kategoria_xs">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="navbar">
+            <div class="container-fluid">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#menu-bok"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">{{ kategoria.nazwa }}</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div>
+                    <h3>{{ kategoria.nazwa }}</h3>
+                </div>
+            </div>
+        </div>
+        <div id="menu-bok" class="navbar-collapse collapse">
+            <div>
+                <div id="lista">
+                    <ul class="list-unstyled">
+                        {% for przepis in przepisy %}
+                            <h4>
+                                <a href="{{ path('przepisid', { 'id': przepis.id }) }}">{{ przepis.nazwa }}</a>
+                            </h4>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+{% endblock %}
