@@ -1,0 +1,31 @@
+{% block formularzDodajKategorie %}
+    <div>
+        {{ form_start(form, { 'attr': { 'novalidate': 'novalidate'}}) }}
+        <div id="formularz">
+            <div>
+                <div>
+                    <label>Nazwa</label>
+                </div>
+                <div>
+                    {{ form_widget(form.nazwa, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div id="blad">
+                    {{ form_errors(form.nazwa) }}
+                </div>
+                <div>
+                    <label>Zdjęcie</label>
+                </div>
+                <div>
+                    {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div id="blad">
+                    {{ form_errors(form.image) }}
+                </div>
+            </div>
+            <div id="przycisk">
+                <button class="btn btn-default" type="submit">Zapisz</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

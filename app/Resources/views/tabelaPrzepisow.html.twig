@@ -1,44 +1,47 @@
 {% block tabelaPrzepisow %}
-<div class="table-responsive">
-    <table class="table table-striped">
-        <tr>
-            <th width="50">Id</th>
-            <th>Nazwa</th>
-            <th>Składniki</th>
-            <th width="400" style="text-justify: auto">Wykonanie</th>
-            <th>Źródło</th>
-            <th width="300" style="text-justify: auto">Uwagi</th>
-            <th>Kategoria</th>
-            <th>Edycja</th>
-            <th>Usunięcie</th>
-        </tr>
-        {% for przepis in przepisy %}
-            <tr>
-                <td>{{ przepis.id }}</td>
-                <td>{{ przepis.nazwa }}</td>
-                <td>{{ przepis.skladniki|nl2br }}</td>
-                <td>{{ przepis.wykonanie|nl2br }}</td>
-                <td>{{ przepis.zrodlo }}</td>
-                <td>{{ przepis.uwagi }}</td>
-                <td>
-                    {% for kategoria in przepis.kategorie %}
-                        <div>{{ kategoria.nazwa }}</div>
-                    {% endfor %}
-                </td>
-                <td>
-                    <form method="post" action="{{ path('edytujprzepis') }}">
-                        <input type="hidden" name="id" value="{{ przepis.id }}">
-                        <input type="submit" class="btn btn-primary btn-sm" value="edytuj">
-                    </form>
-                </td>
-                <td>
-                    <form method="post" action="{{ path('usunprzepis') }}">
-                        <input type="hidden" name="id" value="{{ przepis.id }}">
-                        <input type="submit" class="btn btn-primary btn-sm" value="usuń">
-                    </form>
-                </td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
+    <div class="container">
+        <div class="row" id="tabela">
+            <table class="table">
+                <tr>
+                    <th>Id</th>
+                    <th>Nazwa</th>
+                    <th>Składniki</th>
+                    <th>Wykonanie</th>
+                    <th>Źródło</th>
+                    <th>Uwagi</th>
+                    <th>Kategoria</th>
+                    <th>Edycja</th>
+                    <th>Usunięcie</th>
+                </tr>
+                {% for przepis in przepisy %}
+                    <tr>
+                        <td>{{ przepis.id }}</td>
+                        <td>{{ przepis.nazwa }}</td>
+                        <td>{{ przepis.skladniki|raw }}</td>
+                        <td>{{ przepis.wykonanie|raw }}</td>
+                        <td>{{ przepis.zrodlo }}</td>
+                        <td>{{ przepis.uwagi|raw }}</td>
+                        <td>
+                            {% for kategoria in przepis.kategorie %}
+                                <div>{{ kategoria.nazwa }}</div>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            <form method="post" action="{{ path('edytujprzepis') }}">
+                                <input type="hidden" name="id" value="{{ przepis.id }}">
+                                <button type="submit" class="btn btn-default btn-sm">Edytuj</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" action="{{ path('usunprzepis') }}">
+                                <input type="hidden" name="id" value="{{ przepis.id }}">
+                                <button type="submit" class="btn btn-default btn-sm">Usuń</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 {% endblock %}
+

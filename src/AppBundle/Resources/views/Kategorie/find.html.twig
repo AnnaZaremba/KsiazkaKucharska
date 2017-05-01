@@ -1,12 +1,10 @@
 {% extends '::ksiazkakucharska.html.twig' %}
 {% block container %}
     <div class="row">
-        {% block menuKategorie %}
-            {% include('::menuKategorie.html.twig') %}
-        {% endblock %}
 
-        {% block przepisKategoria %}
-            {% include('::przepisy.html.twig') %}
-        {% endblock %}
+        {% include('::menuKategorie.html.twig') %}
+
+        {% include('::przepisy.html.twig') %}
+
     </div>
 {% endblock %}

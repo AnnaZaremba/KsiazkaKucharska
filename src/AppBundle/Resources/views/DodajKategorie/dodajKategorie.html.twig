@@ -1,55 +1,14 @@
 {% extends '::ksiazkakucharska.html.twig' %}
 {% block container %}
-    <div class="main">
-        <div class="starter-template">
-            <h2>DODAJ KATEGORIĘ</h2>
-        </div>
-        {{ form_start(form, { 'attr': { 'novalidate': 'novalidate'}}) }}
-        <div>
-            <div id="niskiePole">
-                <h4>Nazwa</h4>
-                {{ form_widget(form.nazwa, {'attr': {'class': 'form-control'}}) }}
-                <div id="blad">{{ form_errors(form.nazwa) }}</div>
-                <h4>Zdjęcie</h4>
-                {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
-                <div id="blad">{{ form_errors(form.image) }}</div>
-            </div>
-            <div>
-                <h3>
-                    <button type="submit" class="btn btn-primary">Dodaj kategorie</button>
-                </h3>
-            </div>
-            {{ form_end(form) }}
-            <div class="table-responsive">
-                <table class="table table-striped">
-                    <tr>
-                        <th>Id</th>
-                        <th>Nazwa</th>
-                        <th>Zdjęcie</th>
-                        <th>Edycja</th>
-                        <th>Usunięcie</th>
-                    </tr>
-                    {% for kategoria in kategorie %}
-                        <tr>
-                            <td>{{ kategoria.id }}</td>
-                            <td>{{ kategoria.nazwa }}</td>
-                            <td>{{ kategoria.image }}</td>
-                            <td>
-                                <form method="post" action="{{ path('edytujkategorie') }}">
-                                    <input type="hidden" name="id" value="{{ kategoria.id }}">
-                                    <input type="submit" class="btn btn-primary btn-sm" value="edytuj">
-                                </form>
-                            </td>
-                            <td>
-                                <form method="post" action="{{ path('usunkategorie') }}">
-                                    <input type="hidden" name="id" value="{{ kategoria.id }}">
-                                    <input type="submit" class="btn btn-primary btn-sm" value="usuń">
-                                </form>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </div>
+    <div class="container">
+        <div class="row">
+            <h2>Dodaj kategorię</h2>
+
+            {% include('formularzDodajKategorie.html.twig') %}
+
         </div>
     </div>
+
+    {% include('tabelaKategorii.html.twig') %}
+
 {% endblock %}

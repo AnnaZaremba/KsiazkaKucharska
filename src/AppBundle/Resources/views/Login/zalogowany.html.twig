@@ -1,7 +1,7 @@
 {% extends '::ksiazkakucharska.html.twig' %}
 {% block container %}
     <div class="container">
-        <div class="row">
+        <div class="row" id="zalogowany">
             <h2>Panel użytkownika</h2>
             <div id="lista">
                 <ul class="list-unstyled">
@@ -9,7 +9,7 @@
                         <a href="{{ path('dodajkategorie') }}">Kategorie</a>
                     </li>
                     <li>
-                        <a href="{{ path('dodajprzepis') }}">Wpisy</a>
+                        <a href="{{ path('dodajprzepis') }}">Przepisy</a>
                     </li>
                     <li>
                         <a href="{{ path('logout') }}">Wyloguj</a>

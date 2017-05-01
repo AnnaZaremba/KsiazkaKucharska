@@ -5,19 +5,19 @@
         </div>
         <div class="row">
             <h3>Składniki</h3>
-            <div class="text-justify text">{{ przepis.skladniki|nl2br }}</div>
+            <div>{{ przepis.skladniki|raw }}</div>
         </div>
         <div class="row">
             <h3>Wykonanie</h3>
-            <div class="text-justify text">{{ przepis.wykonanie|nl2br }}</div>
+            <div>{{ przepis.wykonanie|raw }}</div>
         </div>
         <div class="row">
             <h3>Źródło</h3>
-            <div class="text-justify text">{{ przepis.zrodlo }}</div>
+            <div>{{ przepis.zrodlo }}</div>
         </div>
         <div class="row">
             <h3>Uwagi</h3>
-            <div class="text-justify text">{{ przepis.uwagi|nl2br }}</div>
+            <div>{{ przepis.uwagi|raw }}</div>
         </div>
         <div class="row">
             <h3>Kategorie</h3>

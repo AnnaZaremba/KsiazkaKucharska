@@ -1,20 +1,28 @@
 {% block zdjecie %}
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="item active" id="zdjecie">
-                    <img src="{{ asset('images/kategoria/croisant.jpg') }}">
-                </div>
-                <div class="item" id="zdjecie">
-                    <img src="{{ asset('images/kategoria/pizza.jpg') }}">
-                </div>
-                <div class="item" id="zdjecie">
-                    <img src="{{ asset('images/kategoria/truskawki.jpg') }}">
-                </div>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <div class="item active" id="zdjecie">
+                <img src="{{ asset('images/kategoria/croisant.jpg') }}">
+            </div>
+            <div class="item" id="zdjecie">
+                <img src="{{ asset('images/kategoria/pizza.jpg') }}">
+            </div>
+            <div class="item" id="zdjecie">
+                <img src="{{ asset('images/kategoria/dessert.jpg') }}">
+            </div>
+            <div class="item" id="zdjecie">
+                <img src="{{ asset('images/kategoria/breakfast.jpg') }}">
+            </div>
+            <div class="item" id="zdjecie">
+                <img src="{{ asset('images/kategoria/supper.jpg') }}">
             </div>
         </div>
+    </div>
 {% endblock %}
