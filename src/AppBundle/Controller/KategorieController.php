@@ -7,23 +7,34 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class KategorieController
- * @package AppBundle\Controller
- *
- * @Route("/kategorie")
+ * @Route(service="app.kategorie_controller")
  */
 class KategorieController extends Controller
 {
+    /** @var KategoriaRepository */
+    private $kategoriaRepository;
+
     /**
-     * @Route("/{id}", name="kategoriaid", requirements={"id": "\d+"})
-     * @Template()
+     * @param KategoriaRepository $kategoriaRepository
      */
-    public function findAction($id)
+    public function __construct(KategoriaRepository $kategoriaRepository)
+    {
+        $this->kategoriaRepository = $kategoriaRepository;
+    }
+
+    /**
+     * @Route("/kategoria{id}", name="kategoriaid", requirements={"id": "\d+"})
+     * @Template()
+     *
+     * @param int $id
+     * @return array
+     */
+    public function znajdzAction($id)
     {
         return [
-            'kategoria' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getOneById($id),
-            'przepisy' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getOneById($id)->getPrzepisy(),
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
+            'kategoria' =>  $this->kategoriaRepository->getOneById($id),
+            'przepisy' => $this->kategoriaRepository->getOneById($id)->getPrzepisy(),
+            'kategorie' =>  $this->kategoriaRepository->getAllOrderByName(),
         ];
     }
 }

@@ -6,18 +6,27 @@ namespace AppBundle\Controller;
 use AppBundle\Repository\Doctrine\KategoriaRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class SecurityController
- * @package AppBundle\Controller
+ * @Route(service="app.security_controller")
  */
 class SecurityController extends Controller
 {
+    /** @var KategoriaRepository */
+    private $kategoriaRepository;
+
+    /**
+     * @param KategoriaRepository $kategoriaRepository
+     */
+    public function __construct(KategoriaRepository $kategoriaRepository)
+    {
+        $this->kategoriaRepository = $kategoriaRepository;
+    }
+
     /**
      * @Route("/login", name="login")
      */
-    public function loginAction(Request $request)
+    public function loginAction()
     {
         $authenticationUtils = $this->get('security.authentication_utils');
 
@@ -26,7 +35,7 @@ class SecurityController extends Controller
 
         return $this->render('@App/Security/login.html.twig', array(
             'error' => $error,
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
         ));
     }
 }

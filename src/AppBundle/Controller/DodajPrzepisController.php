@@ -13,14 +13,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class DodajPrzepisController
- * @package AppBundle\Controller
+ * @Route(service="app.dodaj_przepis_controller")
  */
 class DodajPrzepisController extends Controller
 {
+    /** @var KategoriaRepository */
+    private $kategoriaRepository;
+
+    /** @var PrzepiRepository */
+    private $przepiRepository;
+
+    /**
+     * @param KategoriaRepository $kategoriaRepository
+     * @param PrzepiRepository $przepiRepository
+     */
+    public function __construct(KategoriaRepository $kategoriaRepository, PrzepiRepository $przepiRepository)
+    {
+        $this->kategoriaRepository = $kategoriaRepository;
+        $this->przepiRepository = $przepiRepository;
+    }
+
     /**
      * @Route("/dodajprzepis", name="dodajprzepis")
      * @Template()
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function dodajPrzepisAction(Request $request)
     {
@@ -30,7 +47,7 @@ class DodajPrzepisController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            (new PrzepiRepository($this->getDoctrine()->getManager()))->save($przepis);
+            $this->przepiRepository->save($przepis);
             return $this->redirectToRoute('dodajprzepis');
         }
 
@@ -42,25 +59,29 @@ class DodajPrzepisController extends Controller
             'form' => $form->createView(),
             'przepis' => $przepis,
             'find' => $find,
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
+            'kategorie' =>  $this->kategoriaRepository->getAllOrderByName(),
+            'przepisy' => $this->przepiRepository->getAllOrderByName(),
         );
     }
 
     /**
      * @Route("/usunprzepis", name="usunprzepis")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request)
     {
         $id = $request->get('id');
 
-        (new PrzepiRepository($this->getDoctrine()->getManager()))->delete($id);
+        $this->przepiRepository->delete($id);
 
         return $this->redirectToRoute('dodajprzepis');
     }
 
     /**
      * @Route("/edytujprzepis", name="edytujprzepis")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request)
     {
@@ -88,7 +109,7 @@ class DodajPrzepisController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            (new PrzepiRepository($this->getDoctrine()->getManager()))->update($przepis);
+            $this->przepiRepository->update($przepis);
 
             return $this->redirectToRoute('dodajprzepis');
         }
@@ -102,8 +123,8 @@ class DodajPrzepisController extends Controller
             'isValid' => $form->isValid(),
             'przepis' => $przepis,
             'dane' => $dane,
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
+            'kategorie' =>  $this->kategoriaRepository->getAllOrderByName(),
+            'przepisy' => $this->przepiRepository->getAllOrderByName(),
         ));
     }
 }

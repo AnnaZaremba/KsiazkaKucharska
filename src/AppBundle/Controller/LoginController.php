@@ -7,11 +7,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
- * Class LoginController
- * @package AppBundle\Controller
+ * @Route(service="app.login_controller")
  */
 class LoginController extends Controller
 {
+    /** @var KategoriaRepository */
+    private $kategoriaRepository;
+
+    /**
+     * @param KategoriaRepository $kategoriaRepository
+     */
+    public function __construct(KategoriaRepository $kategoriaRepository)
+    {
+        $this->kategoriaRepository = $kategoriaRepository;
+    }
+
     /**
      * @Route("/admin", name="admin")
      * @Template()
@@ -19,7 +29,7 @@ class LoginController extends Controller
     public function zalogowanyAction()
     {
         return $this->render('@App/Login/zalogowany.html.twig', array(
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
         ));
     }
 }

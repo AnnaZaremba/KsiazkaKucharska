@@ -4,6 +4,48 @@ parameters:
     #parameter_name: value
 
 services:
-    #service_name:
-    #    class: AppBundle\Directory\ClassName
-    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    app.kategoria_repository:
+        class: AppBundle\Repository\Doctrine\KategoriaRepository
+        arguments: ['@doctrine.orm.entity_manager']
+    app.przepi_repository:
+        class: AppBundle\Repository\Doctrine\PrzepiRepository
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.default_controller:
+        class: AppBundle\Controller\DefaultController
+        arguments: ['@app.kategoria_repository', '@app.przepi_repository']
+
+    app.dodaj_kategorie_controller:
+        class: AppBundle\Controller\DodajKategorieController
+        arguments: ['@app.kategoria_repository']
+        calls:
+            - [ setContainer, [ '@service_container' ]]
+
+    app.dodaj_przepis_controller:
+        class: AppBundle\Controller\DodajPrzepisController
+        arguments: ['@app.kategoria_repository', '@app.przepi_repository']
+        calls:
+            - [ setContainer, [ '@service_container' ]]
+
+    app.kategorie_controller:
+        class: AppBundle\Controller\KategorieController
+        arguments: ['@app.kategoria_repository']
+
+    app.kontakt_controller:
+        class: AppBundle\Controller\KontaktController
+        arguments: ['@app.kategoria_repository']
+        calls:
+            - [ setContainer, [ '@service_container' ]]
+
+    app.login_controller:
+        class: AppBundle\Controller\LoginController
+        arguments: ['@app.kategoria_repository']
+        calls:
+            - [ setContainer, [ '@service_container' ]]
+
+    app.security_controller:
+        class: AppBundle\Controller\SecurityController
+        arguments: ['@app.kategoria_repository']
+        calls:
+            - [ setContainer, [ '@service_container' ]]
+
