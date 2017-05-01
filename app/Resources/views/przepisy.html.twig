@@ -3,24 +3,13 @@
         {% for przepis in przepisy %}
             <div id="przepis">
                 <div class="row">
-                    <h2>{{ przepis.nazwa }}</h2>
+                    <a href="{{ path('przepisid', { 'id': przepis.id }) }}"><h2>{{ przepis.nazwa }}</h2></a>
                 </div>
                 <div class="row">
                     <h3>Składniki</h3>
                     <div>{{ przepis.skladniki|raw }}</div>
                 </div>
-                <div class="row">
-                    <h3>Wykonanie</h3>
-                    <div>{{ przepis.wykonanie|raw }}</div>
-                </div>
-                <div class="row">
-                    <h3>Źródło</h3>
-                    <div>{{ przepis.zrodlo }}</div>
-                </div>
-                <div class="row">
-                    <h3>Uwagi</h3>
-                    <div>{{ przepis.uwagi|raw }}</div>
-                </div>
+
                 <div class="row">
                     <h3>Kategorie</h3>
                     {% for kategoria in przepis.kategorie %}

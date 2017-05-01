@@ -20,7 +20,7 @@
                 <div>
                     <div id="lista">
                         <ul class="list-unstyled">
-                            {% for przepis in przepisy %}
+                            {% for przepis in przepisyNazwa %}
                                 <li>
                                     <a href="{{ path('przepisid', { 'id': przepis.id }) }}">{{ przepis.nazwa }}</a>
                                 </li>
