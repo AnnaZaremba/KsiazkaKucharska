@@ -36,7 +36,7 @@ class DefaultController extends Controller
     public function startAction()
     {
         return [
-            'przepisy' => $this->przepiRepository->getAllOrderByName(),
+            'przepisy' => $this->przepiRepository->getAll(),
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
         ];
     }
