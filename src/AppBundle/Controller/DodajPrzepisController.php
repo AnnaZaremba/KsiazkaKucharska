@@ -55,13 +55,13 @@ class DodajPrzepisController extends Controller
             ->getRepository('AppBundle:Przepis')
             ->findAll();
 
-        return array(
+        return [
             'form' => $form->createView(),
             'przepis' => $przepis,
             'find' => $find,
             'kategorie' =>  $this->kategoriaRepository->getAllOrderByName(),
             'przepisy' => $this->przepiRepository->getAllOrderByName(),
-        );
+        ];
     }
 
     /**
@@ -118,13 +118,13 @@ class DodajPrzepisController extends Controller
             ->getRepository('AppBundle:Przepis')
             ->findAll();
 
-        return $this->render('@App/DodajPrzepis/edytujPrzepis.html.twig', array(
+        return $this->render('@App/DodajPrzepis/edytujPrzepis.html.twig', [
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'przepis' => $przepis,
             'dane' => $dane,
             'kategorie' =>  $this->kategoriaRepository->getAllOrderByName(),
             'przepisy' => $this->przepiRepository->getAllOrderByName(),
-        ));
+        ]);
     }
 }

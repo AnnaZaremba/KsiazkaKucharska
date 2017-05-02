@@ -1,0 +1,22 @@
+{% block formularzWyszukiwania %}
+    <div>
+        {{ form_start(form, { 'attr': { 'novalidate': 'novalidate'}}) }}
+        <div id="formularz">
+            <div>
+                <div>
+                    <label>Nazwa</label>
+                </div>
+                <div>
+                    {{ form_widget(form.search, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div id="blad">
+                    {{ form_errors(form.search) }}
+                </div>
+            </div>
+            <div id="przycisk">
+                <button class="btn btn-default" type="submit">Szukaj</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

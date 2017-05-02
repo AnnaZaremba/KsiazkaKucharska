@@ -33,9 +33,9 @@ class SecurityController extends Controller
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
 
-        return $this->render('@App/Security/login.html.twig', array(
+        return $this->render('@App/Security/login.html.twig', [
             'error' => $error,
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
-        ));
+        ]);
     }
 }

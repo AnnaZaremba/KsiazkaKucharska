@@ -50,6 +50,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="{{ path('okuchni') }}">O kuchni</a></li>
                 <li><a href="{{ path('kontakt') }}">Kontakt</a></li>
+                <li><a href="{{ path('szukaj') }}">Szukaj</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Kategorie<span class="caret"></span></a>
@@ -60,11 +61,6 @@
                             </li>
                         {% endfor %}
                     </ul>
-                </li>
-                <li>
-                <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Szukaj...">
-                </form>
                 </li>
             </ul>
 

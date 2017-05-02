@@ -50,13 +50,13 @@ class DodajKategorieController extends Controller
             ->getRepository('AppBundle:Kategoria')
             ->findAll();
 
-        return array(
+        return [
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'kategoria' => $kategoria,
             'find' => $find,
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
-        );
+        ];
     }
 
     /**
@@ -109,12 +109,12 @@ class DodajKategorieController extends Controller
             ->getRepository('AppBundle:Kategoria')
             ->findAll();
 
-        return $this->render('@App/DodajKategorie/edytujKategorie.html.twig', array(
+        return $this->render('@App/DodajKategorie/edytujKategorie.html.twig', [
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'kategoria' => $kategoria,
             'dane' => $dane,
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
-        ));
+        ]);
     }
 }

@@ -49,3 +49,8 @@ services:
         calls:
             - [ setContainer, [ '@service_container' ]]
 
+    app.search_controller:
+        class: AppBundle\Controller\SearchController
+        arguments: ['@app.kategoria_repository']
+        calls:
+            - [ setContainer, [ '@service_container' ]]
