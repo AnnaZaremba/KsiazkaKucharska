@@ -36,6 +36,13 @@ class PrzepiRepository extends DoctrineRepository
             ->findOneBy([], ['id' => 'DESC']);
     }
 
+    public function search()
+    {
+        return $this->getEntityManager()
+            ->getRepository('AppBundle:Przepis')
+            ->findBy([], ['nazwa' => 'ASC']);
+    }
+
     protected function getEntityClassName()
     {
         return 'AppBundle:Przepis';

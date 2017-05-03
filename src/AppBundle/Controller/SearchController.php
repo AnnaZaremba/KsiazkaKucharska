@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 use AppBundle\Form\Model\Search;
 use AppBundle\Form\Type\SearchFormType;
 use AppBundle\Repository\Doctrine\KategoriaRepository;
+use AppBundle\Repository\Doctrine\PrzepiRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -19,12 +20,17 @@ class SearchController extends Controller
     /** @var KategoriaRepository */
     private $kategoriaRepository;
 
+    /** @var PrzepiRepository */
+    private $przepiRepository;
+
     /**
      * @param KategoriaRepository $kategoriaRepository
+     * @param PrzepiRepository $przepiRepository
      */
-    public function __construct(KategoriaRepository $kategoriaRepository)
+    public function __construct(KategoriaRepository $kategoriaRepository, PrzepiRepository $przepiRepository)
     {
         $this->kategoriaRepository = $kategoriaRepository;
+        $this->przepiRepository = $przepiRepository;
     }
 
     /**
@@ -33,21 +39,16 @@ class SearchController extends Controller
      * @Route("/szukaj", name="szukaj")
      * @Template()
      */
-
     public function szukajAction(Request $request)
     {
-        $szukaj = new Search();
-
-        $form = $this->createForm(SearchFormType::class, $szukaj);
-
+        $form = $this->createForm(SearchFormType::class);
         $form->handleRequest($request);
 
         return [
-            $this->redirectToRoute('szukaj'),
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
-            'szukaj' => $szukaj,
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
+            'przepis' => $this->przepiRepository->getAll(),
         ];
     }
 }
