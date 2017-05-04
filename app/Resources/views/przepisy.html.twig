@@ -6,10 +6,42 @@
                     <a href="{{ path('przepisid', { 'id': przepis.id }) }}"><h2>{{ przepis.nazwa }}</h2></a>
                 </div>
                 <div class="row">
+                    <div class="dropdown" id="przycisk">
+                        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
+                           aria-haspopup="true"
+                           aria-expanded="false">Pokaż cały<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="row">
+                                <h3>Składniki</h3>
+                                <div>{{ przepis.skladniki|raw }}</div>
+                            </li>
+                            <li class="row">
+                                <h3>Wykonanie</h3>
+                                <div>{{ przepis.wykonanie|raw }}</div>
+                            </li>
+                            <li class="row">
+                                <h3>Źródło</h3>
+                                <div>{{ przepis.zrodlo }}</div>
+                            </li>
+                            <li class="row">
+                                <h3>Uwagi</h3>
+                                <div>{{ przepis.uwagi|raw }}</div>
+                            </li>
+                            <li class="row">
+                                <h3>Kategorie</h3>
+                                {% for kategoria in przepis.kategorie %}
+                                    <div>
+                                        <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
+                                    </div>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
                     <h3>Składniki</h3>
                     <div>{{ przepis.skladniki|raw }}</div>
                 </div>
-
                 <div class="row">
                     <h3>Kategorie</h3>
                     {% for kategoria in przepis.kategorie %}

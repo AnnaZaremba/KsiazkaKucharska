@@ -57,7 +57,7 @@
                     <ul class="dropdown-menu">
                         {% for kategoria in kategorie %}
                             <li>
-                                <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa|upper }}</a>
+                                <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
                             </li>
                         {% endfor %}
                     </ul>
