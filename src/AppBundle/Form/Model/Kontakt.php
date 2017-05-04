@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Form\Model;
 
+use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Kontakt
@@ -27,6 +28,9 @@ class Kontakt
      *     minMessage="Pole nie może mieć mniej niż 2 znaki.",
      *     max="128",
      *     maxMessage="Pole nie może mieć więcej niż 128 znaków."
+     * )
+     * @Assert\Email(message = "Błędny adres e-mail.",
+     * checkMX = true
      * )
      */
     private $email;

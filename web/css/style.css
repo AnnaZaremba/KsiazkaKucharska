@@ -3,11 +3,11 @@
 /*********************************************************************************/
 
 #nawigacja .navbar-default .navbar-brand {
-    color: #555555;
+    color: #325531;
 }
 
 #nawigacja .navbar-default .navbar-nav > li > a {
-    color: #555555;
+    color: #325531;
 }
 
 #nawigacja .navbar {
@@ -24,12 +24,16 @@
 
 #kategoria_xs .navbar-default {
     background-color: transparent;
-    border-color: #e7e7e7;
+    border-right: 1px solid #325531;
+    border-bottom: none;
     color: #325531;
     margin-top: 30px;
     margin-left: 5px;
 }
 
+#nawigacja .dropdown-menu {
+    background-color: #eee;
+}
 /*********************************************************************************/
 /* Container                                                                     */
 /*********************************************************************************/
@@ -122,7 +126,7 @@
     text-align: justify;
     margin-top: 30px;
     padding-bottom: 20px;
-    border-bottom: 1px solid #e7e7e7;
+    border-bottom: 1px solid #325531;
 }
 
 #przepis a {
@@ -136,7 +140,7 @@
 
 #przepis .dropdown-menu {
 
-    background-color: #ecfff2;
+    background-color: #eee;
     border: 1px solid #325531;
     border: 1px solid rgba(50, 85, 49, 0.15);
     -webkit-box-shadow: 0 6px 12px rgba(50, 85, 49, 0.17);
