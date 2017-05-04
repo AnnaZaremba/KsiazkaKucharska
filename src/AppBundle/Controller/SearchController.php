@@ -41,14 +41,20 @@ class SearchController extends Controller
      */
     public function szukajAction(Request $request)
     {
-        $form = $this->createForm(SearchFormType::class);
+        $search = new Search();
+        $form = $this->createForm(SearchFormType::class, $search);
         $form->handleRequest($request);
+
+        $przepisy = [];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $przepisy = $this->przepiRepository->search($search->getNazwa());
+        }
 
         return [
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
-            'przepis' => $this->przepiRepository->getAll(),
+            'przepisy' => $przepisy,
         ];
     }
 }

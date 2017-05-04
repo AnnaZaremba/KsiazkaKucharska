@@ -36,11 +36,19 @@ class PrzepiRepository extends DoctrineRepository
             ->findOneBy([], ['id' => 'DESC']);
     }
 
-    public function search()
+    public function search($szukaj)
     {
         return $this->getEntityManager()
             ->getRepository('AppBundle:Przepis')
-            ->findBy([], ['nazwa' => 'ASC']);
+            ->createQueryBuilder('p')
+            ->where('lower(p.nazwa) LIKE lower(:nazwa)')
+            ->orWhere('lower(p.skladniki) LIKE lower(:nazwa)')
+            ->orWhere('lower(p.wykonanie) LIKE lower(:nazwa)')
+            ->orWhere('lower(p.zrodlo) LIKE lower(:nazwa)')
+            ->orWhere('lower(p.uwagi) LIKE lower(:nazwa)')
+            ->setParameter('nazwa', '%' . $szukaj . '%')
+            ->getQuery()
+            ->getResult();
     }
 
     protected function getEntityClassName()

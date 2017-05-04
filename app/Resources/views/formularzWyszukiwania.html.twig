@@ -4,13 +4,13 @@
         <div id="formularz">
             <div>
                 <div>
-                    <label>Nazwa</label>
+                    <label>Nazwa lub składnik</label>
                 </div>
                 <div>
-                    {{ form_widget(form.search, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_widget(form.nazwa, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div id="blad">
-                    {{ form_errors(form.search) }}
+                    {{ form_errors(form.nazwa) }}
                 </div>
             </div>
             <div id="przycisk">
