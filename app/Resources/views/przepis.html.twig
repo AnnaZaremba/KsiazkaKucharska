@@ -5,26 +5,26 @@
         </div>
         <div class="row">
             <h3>Składniki</h3>
-            <div>{{ przepis.skladniki|raw }}</div>
+            <h5>{{ przepis.skladniki|raw }}</h5>
         </div>
         <div class="row">
             <h3>Wykonanie</h3>
-            <div>{{ przepis.wykonanie|raw }}</div>
+            <h5>{{ przepis.wykonanie|raw }}</h5>
         </div>
         <div class="row">
             <h3>Źródło</h3>
-            <div>{{ przepis.zrodlo }}</div>
+            <h5>{{ przepis.zrodlo }}</h5>
         </div>
         <div class="row">
             <h3>Uwagi</h3>
-            <div>{{ przepis.uwagi|raw }}</div>
+            <h5>{{ przepis.uwagi|raw }}</h5>
         </div>
         <div class="row">
             <h3>Kategorie</h3>
             {% for kategoria in przepis.kategorie %}
-                <div>
+                <h5>
                     <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
-                </div>
+                </h5>
             {% endfor %}
         </div>
     </div>
