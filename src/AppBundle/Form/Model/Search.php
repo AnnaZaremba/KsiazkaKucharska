@@ -8,19 +8,24 @@
 
 namespace AppBundle\Form\Model;
 
-use Symfony\Component\Validator\Constraints as Assert;
-
-
 class Search
 {
     /**
-     * @var string
-     * @Assert\NotBlank(message="Pole nie może być puste.")
+     * @var
      */
     private $nazwa;
 
     /**
-     * @return string
+     * @var
+     */
+    private $skladniki;
+    /**
+     * @var
+     */
+    private $wykonanie;
+
+    /**
+     * @return mixed
      */
     public function getNazwa()
     {
@@ -28,10 +33,44 @@ class Search
     }
 
     /**
-     * @param string $nazwa
+     * @param mixed $nazwa
      */
     public function setNazwa($nazwa)
     {
         $this->nazwa = $nazwa;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getSkladniki()
+    {
+        return $this->skladniki;
+    }
+
+    /**
+     * @param mixed $skladniki
+     */
+    public function setSkladniki($skladniki)
+    {
+        $this->skladniki = $skladniki;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWykonanie()
+    {
+        return $this->wykonanie;
+    }
+
+    /**
+     * @param mixed $wykonanie
+     */
+    public function setWykonanie($wykonanie)
+    {
+        $this->wykonanie = $wykonanie;
+    }
+
+
 }

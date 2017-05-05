@@ -5,6 +5,7 @@ namespace AppBundle\Repository\Doctrine;
 use AppBundle\Entity\Kategoria;
 use AppBundle\Entity\Przepis as PrzepisEntity;
 use AppBundle\Form\Model\Przepis;
+use AppBundle\Form\Model\Search;
 
 class PrzepiRepository extends DoctrineRepository
 {
@@ -36,17 +37,26 @@ class PrzepiRepository extends DoctrineRepository
             ->findOneBy([], ['id' => 'DESC']);
     }
 
-    public function search($szukaj)
+    /**
+     * @param Search $search
+     * @return array
+     */
+    public function search($search)
     {
+//            ->orWhere('lower(p.skladniki) LIKE lower(:nazwa)')
+//            ->orWhere('lower(p.wykonanie) LIKE lower(:nazwa)')
+//            ->orWhere('lower(p.zrodlo) LIKE lower(:nazwa)')
+//            ->orWhere('lower(p.uwagi) LIKE lower(:nazwa)')
+
         return $this->getEntityManager()
             ->getRepository('AppBundle:Przepis')
             ->createQueryBuilder('p')
             ->where('lower(p.nazwa) LIKE lower(:nazwa)')
-            ->orWhere('lower(p.skladniki) LIKE lower(:nazwa)')
-            ->orWhere('lower(p.wykonanie) LIKE lower(:nazwa)')
-            ->orWhere('lower(p.zrodlo) LIKE lower(:nazwa)')
-            ->orWhere('lower(p.uwagi) LIKE lower(:nazwa)')
-            ->setParameter('nazwa', '%' . $szukaj . '%')
+            ->andWhere('lower(p.skladniki) LIKE lower(:skladniki)')
+            ->andWhere('lower(p.wykonanie) LIKE lower(:wykonanie)')
+            ->setParameter('nazwa', '%' . $search->getNazwa() . '%')
+            ->setParameter('skladniki', '%' . $search->getSkladniki() . '%')
+            ->setParameter('wykonanie', '%' . $search->getWykonanie() . '%')
             ->getQuery()
             ->getResult();
     }
@@ -66,7 +76,6 @@ class PrzepiRepository extends DoctrineRepository
         $przepisBaza->setWykonanie($przepis->getWykonanie());
         $przepisBaza->setZrodlo($przepis->getZrodlo());
         $przepisBaza->setUwagi($przepis->getUwagi());
-        //$przepisBaza->setKategorie($przepis->getKategorie());
 
         /** @var Kategoria $kategoria */
         foreach ($przepis->getKategorie() as $kategoria) {

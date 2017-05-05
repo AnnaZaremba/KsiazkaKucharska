@@ -4,13 +4,31 @@
         <div id="formularz">
             <div>
                 <div>
-                    <label>Nazwa lub składnik</label>
+                    <label>Nazwa</label>
                 </div>
                 <div>
                     {{ form_widget(form.nazwa, {'attr': {'class': 'form-control'}}) }}
                 </div>
                 <div id="blad">
                     {{ form_errors(form.nazwa) }}
+                </div>
+                <div>
+                    <label>Składniki</label>
+                </div>
+                <div>
+                    {{ form_widget(form.skladniki, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div id="blad">
+                    {{ form_errors(form.skladniki) }}
+                </div>
+                <div>
+                    <label>Wykonanie</label>
+                </div>
+                <div>
+                    {{ form_widget(form.wykonanie, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                <div id="blad">
+                    {{ form_errors(form.wykonanie) }}
                 </div>
             </div>
             <div id="przycisk">

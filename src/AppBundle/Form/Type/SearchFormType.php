@@ -11,6 +11,8 @@ class SearchFormType extends AbstractType
     {
         $builder
             ->add('nazwa', TextType::class)
+            ->add('skladniki', TextType::class)
+            ->add('wykonanie', TextType::class)
         ;
     }
 }

@@ -42,12 +42,13 @@ class SearchController extends Controller
     public function szukajAction(Request $request)
     {
         $search = new Search();
+
         $form = $this->createForm(SearchFormType::class, $search);
         $form->handleRequest($request);
 
         $przepisy = [];
         if ($form->isSubmitted() && $form->isValid()) {
-            $przepisy = $this->przepiRepository->search($search->getNazwa());
+            $przepisy = $this->przepiRepository->search($search);
         }
 
         return [
