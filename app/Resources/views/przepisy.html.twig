@@ -41,14 +41,6 @@
                     <h3>Składniki</h3>
                     <h5>{{ przepis.skladniki|raw }}</h5>
                 </div>
-                <div class="row">
-                    <h3>Kategorie</h3>
-                    {% for kategoria in przepis.kategorie %}
-                        <h5>
-                            <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
-                        </h5>
-                    {% endfor %}
-                </div>
             </div>
         {% endfor %}
     </div>
