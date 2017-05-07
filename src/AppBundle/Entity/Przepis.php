@@ -60,6 +60,11 @@ class Przepis
     private $kategorie;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $zdjecie;
+
+    /**
      * Przepis constructor.
      */
     public function __construct()
@@ -226,4 +231,19 @@ class Przepis
         $this->kategorie = new ArrayCollection();
     }
 
+    /**
+     * @return mixed
+     */
+    public function getZdjecie()
+    {
+        return $this->zdjecie;
+    }
+
+    /**
+     * @param mixed $zdjecie
+     */
+    public function setZdjecie($zdjecie)
+    {
+        $this->zdjecie = $zdjecie;
+    }
 }

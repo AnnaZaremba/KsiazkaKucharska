@@ -38,8 +38,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <h3>Składniki</h3>
-                    <h5>{{ przepis.skladniki|raw }}</h5>
+                    <div class="col-md-4">
+                        <h3>Składniki</h3>
+                        <h5>{{ przepis.skladniki|raw }}</h5>
+                    </div>
+                    <div class="col-md-6" id="zdjecie_przepisu">
+                        <img src="{{ asset(przepis.zdjecie) }}" class="img-thumbnail">
+                    </div>
                 </div>
             </div>
         {% endfor %}

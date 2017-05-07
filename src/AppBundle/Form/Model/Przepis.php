@@ -42,6 +42,11 @@ class Przepis
     private $kategorie;
 
     /**
+     * @var string
+     */
+    private $zdjecie;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -151,5 +156,21 @@ class Przepis
     public function setKategorie($kategorie)
     {
         $this->kategorie = $kategorie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZdjecie()
+    {
+        return $this->zdjecie;
+    }
+
+    /**
+     * @param string $zdjecie
+     */
+    public function setZdjecie($zdjecie)
+    {
+        $this->zdjecie = $zdjecie;
     }
 }
