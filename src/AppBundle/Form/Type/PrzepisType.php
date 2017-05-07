@@ -16,6 +16,7 @@ class PrzepisType extends AbstractType
         $builder
             ->add('id', HiddenType::class)
             ->add('nazwa', TextType::class)
+            ->add('zdjecie', TextType::class)
             ->add('skladniki', TextareaType::class)
             ->add('wykonanie', TextareaType::class)
             ->add('zrodlo', TextType::class)

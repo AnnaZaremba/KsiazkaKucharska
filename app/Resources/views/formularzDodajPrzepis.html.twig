@@ -11,9 +11,12 @@
             <div id="blad">
                 {{ form_errors(form.nazwa) }}
             </div>
-            <div class="form-group">
-                <label for="exampleInputFile">Zdjęcie</label>
+            <div>
+                <label>Zdjęcie</label>
+            </div>
+            <div>
                 <input type="file" id="exampleInputFile">
+                {{ form_widget(form.zdjecie, {'attr': {'class': 'form-control'}}) }}
             </div>
             <div>
                 <label>Składniki</label>

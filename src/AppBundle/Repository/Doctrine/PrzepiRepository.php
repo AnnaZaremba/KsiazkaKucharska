@@ -43,11 +43,6 @@ class PrzepiRepository extends DoctrineRepository
      */
     public function search($search)
     {
-//            ->orWhere('lower(p.skladniki) LIKE lower(:nazwa)')
-//            ->orWhere('lower(p.wykonanie) LIKE lower(:nazwa)')
-//            ->orWhere('lower(p.zrodlo) LIKE lower(:nazwa)')
-//            ->orWhere('lower(p.uwagi) LIKE lower(:nazwa)')
-
         return $this->getEntityManager()
             ->getRepository('AppBundle:Przepis')
             ->createQueryBuilder('p')
@@ -72,6 +67,7 @@ class PrzepiRepository extends DoctrineRepository
 
         $przepisBaza = new PrzepisEntity();
         $przepisBaza->setNazwa($przepis->getNazwa());
+        $przepisBaza->setZdjecie($przepis->getZdjecie());
         $przepisBaza->setSkladniki($przepis->getSkladniki());
         $przepisBaza->setWykonanie($przepis->getWykonanie());
         $przepisBaza->setZrodlo($przepis->getZrodlo());
@@ -93,6 +89,7 @@ class PrzepiRepository extends DoctrineRepository
         $przepisBaza = $this->find($przepis->getId());
 
         $przepisBaza->setNazwa($przepis->getNazwa());
+        $przepisBaza->setZdjecie($przepis->getZdjecie());
         $przepisBaza->setSkladniki($przepis->getSkladniki());
         $przepisBaza->setWykonanie($przepis->getWykonanie());
         $przepisBaza->setZrodlo($przepis->getZrodlo());
@@ -106,7 +103,6 @@ class PrzepiRepository extends DoctrineRepository
             $przepisBaza->addKategoria($kategoria);
         }
 
-//        $em->remove($kategoria);
         $em->persist($przepisBaza);
         $em->flush();
     }

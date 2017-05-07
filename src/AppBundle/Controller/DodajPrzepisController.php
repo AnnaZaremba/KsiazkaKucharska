@@ -96,6 +96,7 @@ class DodajPrzepisController extends Controller
 
             $przepis->setId($przepisBaza->getId());
             $przepis->setNazwa($przepisBaza->getNazwa());
+            $przepis->setZdjecie($przepisBaza->getZdjecie());
             $przepis->setSkladniki($przepisBaza->getSkladniki());
             $przepis->setWykonanie($przepisBaza->getWykonanie());
             $przepis->setZrodlo($przepisBaza->getZrodlo());
