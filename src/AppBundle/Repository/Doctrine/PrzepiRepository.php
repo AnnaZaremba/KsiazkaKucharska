@@ -80,6 +80,8 @@ class PrzepiRepository extends DoctrineRepository
 
         $em->persist($przepisBaza);
         $em->flush();
+
+        return $przepisBaza;
     }
 
     public function update(Przepis $przepis)
@@ -104,6 +106,13 @@ class PrzepiRepository extends DoctrineRepository
         }
 
         $em->persist($przepisBaza);
+        $em->flush();
+    }
+
+    public function updateEntity(PrzepisEntity $przepis) {
+        $em = $this->getEntityManager();
+
+        $em->persist($przepis);
         $em->flush();
     }
 

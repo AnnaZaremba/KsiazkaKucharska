@@ -10,6 +10,7 @@ use AppBundle\Repository\Doctrine\PrzepiRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -47,7 +48,19 @@ class DodajPrzepisController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $this->przepiRepository->save($przepis);
+            /** @var UploadedFile $file */
+            $file = $przepis->getZdjecie();
+
+            $przepisEntity = $this->przepiRepository->save($przepis);
+
+            //np: 1.jpg
+            $filename = $przepisEntity->getId() . '.' . $file->guessExtension();
+
+            $file->move($this->getParameter('zdjecia_przepisow'), $filename);
+
+            $przepisEntity->setZdjecie($filename);
+            $this->przepiRepository->updateEntity($przepisEntity);
+
             return $this->redirectToRoute('dodajprzepis');
         }
 

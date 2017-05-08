@@ -43,6 +43,7 @@ class Przepis
 
     /**
      * @var string
+     * @Assert\File()
      */
     private $zdjecie;
 

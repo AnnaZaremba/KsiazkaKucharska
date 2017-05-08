@@ -5,11 +5,6 @@
                 <tr>
                     <th>Id</th>
                     <th>Nazwa</th>
-                    <th>Zdjęcie</th>
-                    <th>Składniki</th>
-                    <th>Wykonanie</th>
-                    <th>Źródło</th>
-                    <th>Uwagi</th>
                     <th>Kategoria</th>
                     <th>Edycja</th>
                     <th>Usunięcie</th>
@@ -18,11 +13,6 @@
                     <tr>
                         <td>{{ przepis.id }}</td>
                         <td>{{ przepis.nazwa }}</td>
-                        <td>{{ przepis.zdjecie }}</td>
-                        <td>{{ przepis.skladniki|raw }}</td>
-                        <td>{{ przepis.wykonanie|raw }}</td>
-                        <td>{{ przepis.zrodlo }}</td>
-                        <td>{{ przepis.uwagi|raw }}</td>
                         <td>
                             {% for kategoria in przepis.kategorie %}
                                 <div>{{ kategoria.nazwa }}</div>

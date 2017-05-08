@@ -43,7 +43,7 @@
                         <h5>{{ przepis.skladniki|raw }}</h5>
                     </div>
                     <div class="col-md-6" id="zdjecie_przepisu">
-                        <img src="{{ asset(przepis.zdjecie) }}" class="img-thumbnail">
+                        <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" class="img-thumbnail">
                     </div>
                 </div>
             </div>
