@@ -10,6 +10,7 @@ use AppBundle\Repository\Doctrine\PrzepiRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -109,7 +110,10 @@ class DodajPrzepisController extends Controller
 
             $przepis->setId($przepisBaza->getId());
             $przepis->setNazwa($przepisBaza->getNazwa());
-            $przepis->setZdjecie($przepisBaza->getZdjecie());
+
+            if (!empty($przepisBaza->getZdjecie())) {
+                $przepis->setZdjecie(new File($this->getParameter('zdjecia_przepisow') . "/" . $przepisBaza->getZdjecie()));
+            }
             $przepis->setSkladniki($przepisBaza->getSkladniki());
             $przepis->setWykonanie($przepisBaza->getWykonanie());
             $przepis->setZrodlo($przepisBaza->getZrodlo());

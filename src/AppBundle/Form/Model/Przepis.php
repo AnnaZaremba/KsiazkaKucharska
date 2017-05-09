@@ -2,6 +2,7 @@
 namespace AppBundle\Form\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Przepis
@@ -168,9 +169,9 @@ class Przepis
     }
 
     /**
-     * @param string $zdjecie
+     * @param File $zdjecie
      */
-    public function setZdjecie($zdjecie)
+    public function setZdjecie(File $zdjecie)
     {
         $this->zdjecie = $zdjecie;
     }
