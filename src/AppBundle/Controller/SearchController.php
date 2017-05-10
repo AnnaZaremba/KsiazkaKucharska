@@ -48,7 +48,8 @@ class SearchController extends Controller
 
         $przepisy = [];
         if ($form->isSubmitted() && $form->isValid()) {
-            $przepisy = $this->przepiRepository->search($search);
+            $przepisy = $this->przepiRepository
+                ->search($search);
         }
 
         return [
