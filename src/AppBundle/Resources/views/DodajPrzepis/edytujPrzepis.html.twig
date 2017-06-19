@@ -3,13 +3,9 @@
     {{ tinymce_init() }}
     <div class="container">
         <div class="row">
-            <h2>Edytuj przepis</h2>
-
+            <h2>Dodaj przepis</h2>
             {% include('formularzDodajPrzepis.html.twig') %}
-
         </div>
     </div>
-
-        {% include('tabelaPrzepisow.html.twig') %}
-
+    {% include('tabelaPrzepisow.html.twig') %}
 {% endblock %}

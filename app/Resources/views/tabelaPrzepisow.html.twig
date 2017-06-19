@@ -6,6 +6,7 @@
                     <th>Id</th>
                     <th>Nazwa</th>
                     <th>Kategoria</th>
+                    <th>Zdjęcie</th>
                     <th>Edycja</th>
                     <th>Usunięcie</th>
                 </tr>
@@ -18,6 +19,7 @@
                                 <div>{{ kategoria.nazwa }}</div>
                             {% endfor %}
                         </td>
+                        <td>{{ przepis.zdjecie }}</td>
                         <td>
                             <form method="post" action="{{ path('edytujprzepis') }}">
                                 <input type="hidden" name="id" value="{{ przepis.id }}">
