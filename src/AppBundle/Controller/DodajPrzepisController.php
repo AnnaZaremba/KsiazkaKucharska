@@ -125,9 +125,27 @@ class DodajPrzepisController extends Controller
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+//        if ($form->isSubmitted() && $form->isValid()) {
+//
+//            $this->przepiRepository->update($przepis);
+//
+//            return $this->redirectToRoute('dodajprzepis');
+//        }
 
+        if ($form->isSubmitted() && $form->isValid()) {
             $this->przepiRepository->update($przepis);
+            /** @var UploadedFile $file */
+            $file = $przepis->getZdjecie();
+
+            $przepisEntity = $this->przepiRepository->save($przepis);
+
+            //np: 1.jpg
+            $filename = $przepisEntity->getId() . '.' . $file->guessExtension();
+
+            $file->move($this->getParameter('zdjecia_przepisow'), $filename);
+
+            $przepisEntity->setZdjecie($filename);
+            $this->przepiRepository->updateEntity($przepisEntity);
 
             return $this->redirectToRoute('dodajprzepis');
         }
