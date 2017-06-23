@@ -11,7 +11,9 @@
                         <h5>{{ przepis.skladniki|raw }}</h5>
                     </div>
                     <div class="col-md-6" id="zdjecie_przepisu">
-                        <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" class="img-thumbnail">
+                        {% if przepis.zdjecie is not null %}
+                            <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}">
+                        {% endif %}
                     </div>
                     <div class="col-md-10">
                         <h3>Wykonanie</h3>

@@ -20,7 +20,9 @@
                             {% endfor %}
                         </td>
                         <td>
-                            <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" id="zdjecie_przepisu_min">
+                            {% if przepis.zdjecie is not null %}
+                                <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" id="zdjecie_przepisu_min">
+                            {% endif %}
                         </td>
                         <td>
                             <form method="post" action="{{ path('edytujprzepis') }}">
