@@ -12,7 +12,7 @@
                     </div>
                     <div class="col-md-6" id="zdjecie_przepisu">
                         {% if przepis.zdjecie is not null %}
-                            <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}">
+                            <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" class="img-thumbnail">
                         {% endif %}
                     </div>
                     <div class="col-md-10">
