@@ -1,0 +1,43 @@
+{% block przepisy %}
+    <div class="col-md-10">
+        {% for przepis in przepisy %}
+            <div id="przepis">
+                <div class="row">
+                    <a href="{{ path('przepisid', { 'id': przepis.id }) }}"><h2>{{ przepis.nazwa }}</h2></a>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Składniki</h3>
+                        <h5>{{ przepis.skladniki|raw }}</h5>
+                    </div>
+                    <div class="col-md-6" id="zdjecie_przepisu">
+                        {% if przepis.zdjecie is not null %}
+                            <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" class="img-thumbnail">
+                        {% endif %}
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Wykonanie</h3>
+                        <h5>{{ przepis.wykonanie|raw }}</h5>
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Źródło</h3>
+                        <h5>{{ przepis.zrodlo }}</h5>
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Uwagi</h3>
+                        <h5>{{ przepis.uwagi|raw }}</h5>
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Kategorie</h3>
+                        {% for kategoria in przepis.kategorie %}
+                            <h5>
+                                <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
+                            </h5>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

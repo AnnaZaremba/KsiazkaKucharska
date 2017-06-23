@@ -28,6 +28,9 @@ class Kontakt
      *     max="128",
      *     maxMessage="Pole nie może mieć więcej niż 128 znaków."
      * )
+     * @Assert\Email(message = "Błędny adres e-mail.",
+     * checkMX = true
+     * )
      */
     private $email;
 

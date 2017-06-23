@@ -2,6 +2,7 @@
 namespace AppBundle\Form\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Przepis
@@ -40,6 +41,12 @@ class Przepis
      * @var ArrayCollection
      */
     private $kategorie;
+
+    /**
+     * @var string
+     * @Assert\File()
+     */
+    private $zdjecie;
 
     /**
      * @return mixed
@@ -151,5 +158,21 @@ class Przepis
     public function setKategorie($kategorie)
     {
         $this->kategorie = $kategorie;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZdjecie()
+    {
+        return $this->zdjecie;
+    }
+
+    /**
+     * @param File $zdjecie
+     */
+    public function setZdjecie(File $zdjecie)
+    {
+        $this->zdjecie = $zdjecie;
     }
 }

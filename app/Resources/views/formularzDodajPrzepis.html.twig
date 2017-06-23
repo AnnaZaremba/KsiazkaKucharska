@@ -1,0 +1,71 @@
+{% block formularzDodajPrzepis %}
+    <div>
+        {{ form_start(form, { 'attr': { 'novalidate': 'novalidate'}}) }}
+        <div id="formularz">
+            <div>
+                <label>Nazwa</label>
+            </div>
+            <div>
+                {{ form_widget(form.nazwa, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div id="blad">
+                {{ form_errors(form.nazwa) }}
+            </div>
+            <div>
+                <label>Zdjęcie</label>
+            </div>
+            <div id="dodajZdjecie">
+                {{ form_widget(form.zdjecie, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div>
+                <label>Składniki</label>
+            </div>
+            <div>
+                {{ form_widget(form.skladniki, {'attr': {'class': 'form-control tinymce'}}) }}
+            </div>
+            <div id="blad">
+                {{ form_errors(form.skladniki) }}
+            </div>
+            <div>
+                <label>Wykonanie</label>
+            </div>
+            <div>
+                {{ form_widget(form.wykonanie, {'attr': {'class': 'form-control tinymce'}}) }}
+            </div>
+            <div id="blad">
+                {{ form_errors(form.wykonanie) }}
+            </div>
+            <div>
+                <label>Źródło</label>
+            </div>
+            <div>
+                {{ form_widget(form.zrodlo, {'attr': {'class': 'form-control'}}) }}
+            </div>
+            <div id="blad">
+                {{ form_errors(form.zrodlo) }}
+            </div>
+            <div>
+                <label>Uwagi</label>
+            </div>
+            <div>
+                {{ form_widget(form.uwagi, {'attr': {'class': 'form-control tinymce'}}) }}
+            </div>
+            <div id="blad">
+                {{ form_errors(form.uwagi) }}
+            </div>
+            <div>
+                <label>Kategorie</label>
+            </div>
+            <div id="dodajKategorie">
+                {{ form_widget(form.kategorie, {'attr': { 'class': 'form-control'}}) }}
+            </div>
+            <div id="blad">
+                {{ form_errors(form.kategorie) }}
+            </div>
+        </div>
+        <div id="przycisk">
+            <button class="btn btn-default" type="submit">Zapisz</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

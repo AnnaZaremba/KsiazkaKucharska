@@ -1,0 +1,205 @@
+/*********************************************************************************/
+/* Nawigacja                                                                     */
+/*********************************************************************************/
+
+#nawigacja .navbar-default .navbar-brand {
+    color: #325531;
+}
+
+#nawigacja .navbar-default .navbar-nav > li > a {
+    color: #325531;
+}
+
+#nawigacja .navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 0;
+    border: 1px solid transparent;
+}
+
+#nawigacja a {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+#kategoria_xs .navbar-default {
+    background-color: transparent;
+    border-right: 1px solid #325531;
+    border-bottom: none;
+    color: #325531;
+    margin-top: 30px;
+    margin-left: 5px;
+}
+
+#nawigacja .dropdown-menu {
+    background-color: #eee;
+}
+/*********************************************************************************/
+/* Container                                                                     */
+/*********************************************************************************/
+
+.row {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#o_mnie h2,
+#o_mnie h3,
+#o_mnie h4 {
+    text-align: center;
+}
+
+#zalogowany h2 {
+    margin-left: 15px;
+}
+
+/*********************************************************************************/
+/* Formularz                                                                     */
+/*********************************************************************************/
+
+#formularz {
+
+}
+
+#formularz label {
+    margin-top: 25px;
+}
+
+#blad {
+    color: #aa0000;
+}
+
+#przycisk {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#dodajKategorie .form-control {
+    height: auto;
+    padding: 5px;
+    text-align: center;
+}
+
+#dodajKategorie label {
+    margin: 10px;
+}
+
+/*********************************************************************************/
+/* Zdjęcia                                                                       */
+/*********************************************************************************/
+
+#zdjecie_profilowe {
+    text-align: center;
+}
+
+#zdjecie_przepisu {
+    width: 50%;
+    text-align: right;
+}
+
+#zdjecie_przepisu .img-thumbnail {
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+#zdjecie_przepisu_min {
+    width: 100px;
+    text-align: center;
+}
+
+#dodajZdjecie .form-control {
+    height: auto;
+    padding: 5px;
+    text-align: left;
+}
+
+#dodajZdjecie label {
+    margin: 10px;
+}
+
+/*********************************************************************************/
+/* Lista                                                                         */
+/*********************************************************************************/
+
+#lista a {
+    color: #555555;
+}
+
+#lista ol,
+#lista ul {
+    margin-bottom: 10px;
+}
+
+#lista li {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#lista h4 {
+    color: #325531;
+}
+
+/*********************************************************************************/
+/* Tabela                                                                        */
+/*********************************************************************************/
+
+#tabela td {
+    text-align: justify;
+}
+
+/*********************************************************************************/
+/* Treść                                                                         */
+/*********************************************************************************/
+
+#przepis {
+    text-align: justify;
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #325531;
+}
+
+#przepis a {
+    color: #555555;
+}
+
+#przepis h2 {
+    color: #325531;
+    font-weight: bold;
+}
+
+#przepis .dropdown-menu {
+
+    background-color: #eee;
+    border: 1px solid #325531;
+    border: 1px solid rgba(50, 85, 49, 0.15);
+    -webkit-box-shadow: 0 6px 12px rgba(50, 85, 49, 0.17);
+    box-shadow: 0 6px 12px rgba(50, 85, 49, 0.17);
+}
+/*********************************************************************************/
+/* Stopka                                                                        */
+/*********************************************************************************/
+
+#stopka .footer {
+    margin-top: 100px;
+    padding-top: 20px;
+    position: static;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #eee;
+}
+
+#stopka a {
+    color: #555555;
+    text-decoration: none;
+}

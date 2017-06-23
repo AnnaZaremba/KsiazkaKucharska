@@ -1,27 +1,20 @@
 {% extends '::ksiazkakucharska.html.twig' %}
 {% block container %}
-    {% block zdjecie %}
-        {% include('::zdjecie.html.twig') %}
-    {% endblock %}
-    <div class="main">
-        <div class="starter-template">
-            <h2>PANEL UŻYTKOWNIKA</h2>
-        </div>
-        <div id="lista">
-            <div>
-                <h3>
-                <a href="{{ path('dodajprzepis') }}">Dodaj przepis</a>
-                </h3>
-            </div>
-            <div>
-                <h3>
-                <a href="{{ path('dodajkategorie') }}">Dodaj kategorię</a>
-                </h3>
-            </div>
-            <div>
-              <h3>
-                  <a href="{{ path('logout') }}">Wyloguj</a>
-              </h3>
+    <div class="container">
+        <div class="row" id="zalogowany">
+            <h2>Panel użytkownika</h2>
+            <div id="lista">
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{ path('dodajkategorie') }}">Kategorie</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('dodajprzepis') }}">Przepisy</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('logout') }}">Wyloguj</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

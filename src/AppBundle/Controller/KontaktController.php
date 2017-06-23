@@ -12,16 +12,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class KontaktController
- * @package AppBundle\Controller
- *
- * @Route("/")
+ * @Route(service="app.kontakt_controller")
  */
 class KontaktController extends Controller
 {
+    /** @var KategoriaRepository */
+    private $kategoriaRepository;
+
+    /**
+     * @param KategoriaRepository $kategoriaRepository
+     */
+    public function __construct(KategoriaRepository $kategoriaRepository)
+    {
+        $this->kategoriaRepository = $kategoriaRepository;
+    }
+
     /**
      * @Route("/kontakt", name="kontakt")
      * @Template()
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function kontaktAction(Request $request)
     {
@@ -60,7 +70,7 @@ class KontaktController extends Controller
             'isValid' => $form->isValid(),
             'kontakt' => $kontakt,
             'find' => $find,
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName()
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName()
         );
     }
 
@@ -73,7 +83,7 @@ class KontaktController extends Controller
     public function mailWyslanyAction()
     {
         return [
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName()
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName()
         ];
     }
 }

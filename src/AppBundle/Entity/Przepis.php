@@ -44,10 +44,25 @@ class Przepis
     private $uwagi;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createat;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $lastmodify;
+
+    /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Kategoria", mappedBy="przepisy", cascade={"all"})
      * @ORM\JoinTable(name="przepiskategoria")
      */
     private $kategorie;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $zdjecie;
 
     /**
      * Przepis constructor.
@@ -156,6 +171,38 @@ class Przepis
     /**
      * @return mixed
      */
+    public function getCreateat()
+    {
+        return $this->createat;
+    }
+
+    /**
+     * @param mixed $createat
+     */
+    public function setCreateat($createat)
+    {
+        $this->createat = $createat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastmodify()
+    {
+        return $this->lastmodify;
+    }
+
+    /**
+     * @param mixed $lastmodify
+     */
+    public function setLastmodify($lastmodify)
+    {
+        $this->lastmodify = $lastmodify;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getKategorie()
     {
         return $this->kategorie;
@@ -184,4 +231,19 @@ class Przepis
         $this->kategorie = new ArrayCollection();
     }
 
+    /**
+     * @return mixed
+     */
+    public function getZdjecie()
+    {
+        return $this->zdjecie;
+    }
+
+    /**
+     * @param mixed $zdjecie
+     */
+    public function setZdjecie($zdjecie)
+    {
+        $this->zdjecie = $zdjecie;
+    }
 }

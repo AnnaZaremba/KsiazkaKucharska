@@ -30,6 +30,16 @@ class Kategoria
     private $image;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createat;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $lastmodify;
+
+    /**
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Przepis", inversedBy="kategorie", cascade={"persist"})
      * @ORM\JoinTable(name="przepiskategoria")
      * @OrderBy({"nazwa" = "ASC"})
@@ -91,6 +101,38 @@ class Kategoria
     public function setImage($image)
     {
         $this->image = $image;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreateat()
+    {
+        return $this->createat;
+    }
+
+    /**
+     * @param mixed $createat
+     */
+    public function setCreateat($createat)
+    {
+        $this->createat = $createat;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastmodify()
+    {
+        return $this->lastmodify;
+    }
+
+    /**
+     * @param mixed $lastmodify
+     */
+    public function setLastmodify($lastmodify)
+    {
+        $this->lastmodify = $lastmodify;
     }
 
     /**

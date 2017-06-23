@@ -11,14 +11,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class DodajKategorieController
- * @package AppBundle\Controller
+ * @Route(service="app.dodaj_kategorie_controller")
  */
 class DodajKategorieController extends Controller
 {
+    /** @var KategoriaRepository */
+    private $kategoriaRepository;
+
+    /**
+     * @param KategoriaRepository $kategoriaRepository
+     */
+    public function __construct(KategoriaRepository $kategoriaRepository)
+    {
+        $this->kategoriaRepository = $kategoriaRepository;
+    }
+
     /**
      * @Route("/dodajkategorie", name="dodajkategorie")
      * @Template()
+     * @param Request $request
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function dodajKategorieAction(Request $request)
     {
@@ -29,7 +41,7 @@ class DodajKategorieController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            (new KategoriaRepository($this->getDoctrine()->getManager()))->save($kategoria);
+            $this->kategoriaRepository->save($kategoria);
 
             return $this->redirectToRoute('dodajkategorie');
         }
@@ -38,29 +50,33 @@ class DodajKategorieController extends Controller
             ->getRepository('AppBundle:Kategoria')
             ->findAll();
 
-        return array(
+        return [
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'kategoria' => $kategoria,
             'find' => $find,
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-        );
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
+        ];
     }
 
     /**
      * @Route("/usunkategorie", name="usunkategorie")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function deleteAction(Request $request)
     {
         $id = $request->get('id');
 
-        (new KategoriaRepository($this->getDoctrine()->getManager()))->delete($id);
+        $this->kategoriaRepository->delete($id);
 
         return $this->redirectToRoute('dodajkategorie');
     }
 
     /**
      * @Route("/edytujkategorie", name="edytujkategorie")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
     public function editAction(Request $request)
     {
@@ -84,7 +100,7 @@ class DodajKategorieController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            (new KategoriaRepository($this->getDoctrine()->getManager()))->update($kategoria);
+            $this->kategoriaRepository->update($kategoria);
 
             return $this->redirectToRoute('dodajkategorie');
         }
@@ -93,12 +109,12 @@ class DodajKategorieController extends Controller
             ->getRepository('AppBundle:Kategoria')
             ->findAll();
 
-        return $this->render('@App/DodajKategorie/edytujKategorie.html.twig', array(
+        return $this->render('@App/DodajKategorie/edytujKategorie.html.twig', [
             'form' => $form->createView(),
             'isValid' => $form->isValid(),
             'kategoria' => $kategoria,
             'dane' => $dane,
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-        ));
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
+        ]);
     }
 }

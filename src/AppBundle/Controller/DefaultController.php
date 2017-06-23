@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Controller;
 
 use AppBundle\Repository\Doctrine\KategoriaRepository;
@@ -6,36 +7,55 @@ use AppBundle\Repository\Doctrine\PrzepiRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class DefaultController
- * @package AppBundle\Controller
+ * @Route(service="app.default_controller")
  */
 class DefaultController extends Controller
 {
+    /** @var KategoriaRepository */
+    private $kategoriaRepository;
+
+    /** @var PrzepiRepository */
+    private $przepiRepository;
+
+    /**
+     * @param KategoriaRepository $kategoriaRepository
+     * @param PrzepiRepository $przepiRepository
+     */
+    public function __construct(KategoriaRepository $kategoriaRepository, PrzepiRepository $przepiRepository)
+    {
+        $this->kategoriaRepository = $kategoriaRepository;
+        $this->przepiRepository = $przepiRepository;
+    }
+
+
     /**
      * @Route("/", name="ksiazkakucharska")
      * @Template()
      */
-    public function startAction(Request $request)
+    public function startAction()
     {
         return [
-            'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
+            'przepisyNazwa' => $this->przepiRepository->getAllOrderByName(),
+            'przepisy' => $this->przepiRepository->getAll(),
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
         ];
     }
 
     /**
      * @Route("/{id}", name="przepisid", requirements={"id": "\d+"})
      * @Template()
+     * @param $id
+     * @return array
      */
     public function findAction($id)
     {
         return [
-            'przepis' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getOneById($id),
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
-            'przepisy' => (new PrzepiRepository($this->getDoctrine()->getManager()))->getAllOrderByName(),
+            'przepis' => $this->przepiRepository->getOneById($id),
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
+            'przepisy' => $this->przepiRepository->getAllOrderByName(),
+            'przepisyNazwa' => $this->przepiRepository->getAllOrderByName(),
         ];
     }
 
@@ -43,10 +63,10 @@ class DefaultController extends Controller
      * @Route("/omnie", name="omnie")
      * @Template()
      */
-    public function omnieAction(Request $request)
+    public function omnieAction()
     {
         return [
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName()
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName()
         ];
     }
 
@@ -54,10 +74,10 @@ class DefaultController extends Controller
      * @Route("/okuchni", name="okuchni")
      * @Template()
      */
-    public function okuchniAction(Request $request)
+    public function okuchniAction()
     {
         return [
-            'kategorie' => (new KategoriaRepository($this->getDoctrine()->getManager()))->getAllOrderByName()
+            'kategorie' => $this->kategoriaRepository->getAllOrderByName()
         ];
     }
 }

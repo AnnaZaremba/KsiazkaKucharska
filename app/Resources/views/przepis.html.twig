@@ -1,33 +1,34 @@
 {% block przepis %}
-    <div class="main" id="wrapper">
-        <div class="col-xs-10">
-            <div>
-                <h2>{{ przepis.nazwa }}</h2>
-            </div>
-            <div>
-                <h3>Składniki</h3>
-                <div>{{ przepis.skladniki|nl2br }}</div>
-            </div>
-            <div>
-                <h3>Wykonanie</h3>
-                <div class="text-justify text">{{ przepis.wykonanie|nl2br }}</div>
-            </div>
-            <div>
-                <h3>Źródło</h3>
-                <div>{{ przepis.zrodlo }}</div>
-            </div>
-            <div>
-                <h3>Uwagi</h3>
-                <div class="text-justify text">{{ przepis.uwagi|nl2br }}</div>
-            </div>
-            <div id="kategorie">
-                <h3>Kategorie</h3>
-                {% for kategoria in przepis.kategorie %}
-                    <div>
-                        <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
-                    </div>
-                {% endfor %}
-            </div>
+    <div class="col-md-10" id="przepis">
+        <div class="col-md-10">
+            <h2>{{ przepis.nazwa }}</h2>
+        </div>
+        <div class="col-md-4">
+            <h3>Składniki</h3>
+            <h5>{{ przepis.skladniki|raw }}</h5>
+        </div>
+        <div class="col-md-6" id="zdjecie_przepisu">
+            <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" class="img-thumbnail">
+        </div>
+        <div class="col-md-10">
+            <h3>Wykonanie</h3>
+            <h5>{{ przepis.wykonanie|raw }}</h5>
+        </div>
+        <div class="col-md-10">
+            <h3>Źródło</h3>
+            <h5>{{ przepis.zrodlo }}</h5>
+        </div>
+        <div class="col-md-10">
+            <h3>Uwagi</h3>
+            <h5>{{ przepis.uwagi|raw }}</h5>
+        </div>
+        <div class="col-md-10">
+            <h3>Kategorie</h3>
+            {% for kategoria in przepis.kategorie %}
+                <h5>
+                    <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
+                </h5>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
