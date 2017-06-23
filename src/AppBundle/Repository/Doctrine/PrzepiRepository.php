@@ -91,7 +91,10 @@ class PrzepiRepository extends DoctrineRepository
         $przepisBaza = $this->find($przepis->getId());
 
         $przepisBaza->setNazwa($przepis->getNazwa());
-        $przepisBaza->setZdjecie($przepis->getZdjecie());
+
+        if ($przepis->getZdjecie() != '') {
+            $przepisBaza->setZdjecie($przepis->getZdjecie());
+        }
         $przepisBaza->setSkladniki($przepis->getSkladniki());
         $przepisBaza->setWykonanie($przepis->getWykonanie());
         $przepisBaza->setZrodlo($przepis->getZrodlo());
@@ -107,6 +110,8 @@ class PrzepiRepository extends DoctrineRepository
 
         $em->persist($przepisBaza);
         $em->flush();
+
+        return $przepisBaza;
     }
 
     public function updateEntity(PrzepisEntity $przepis) {

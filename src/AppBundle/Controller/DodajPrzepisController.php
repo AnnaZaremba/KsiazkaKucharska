@@ -54,6 +54,10 @@ class DodajPrzepisController extends Controller
 
             $przepisEntity = $this->przepiRepository->save($przepis);
 
+            if ($file === null) {
+                return $this->redirectToRoute('dodajprzepis');
+            }
+
             //np: 1.jpg
             $filename = $przepisEntity->getId() . '.' . $file->guessExtension();
 
@@ -103,41 +107,34 @@ class DodajPrzepisController extends Controller
         $przepis = new Przepis();
 
         if (isset($id)) {
-            /** @var PrzepisEntity $przepisBaza */
-            $przepisBaza = $this->getDoctrine()
+            /** @var PrzepisEntity $przepisEntity */
+            $przepisEntity = $this->getDoctrine()
                 ->getRepository('AppBundle:Przepis')
                 ->find($id);
 
-            $przepis->setId($przepisBaza->getId());
-            $przepis->setNazwa($przepisBaza->getNazwa());
+            $przepis->setId($przepisEntity->getId());
+            $przepis->setNazwa($przepisEntity->getNazwa());
 
-            if (!empty($przepisBaza->getZdjecie())) {
-                $przepis->setZdjecie(new File($this->getParameter('zdjecia_przepisow') . "/" . $przepisBaza->getZdjecie()));
-            }
-            $przepis->setSkladniki($przepisBaza->getSkladniki());
-            $przepis->setWykonanie($przepisBaza->getWykonanie());
-            $przepis->setZrodlo($przepisBaza->getZrodlo());
-            $przepis->setUwagi($przepisBaza->getUwagi());
-            $przepis->setKategorie($przepisBaza->getKategorie());
+            $przepis->setSkladniki($przepisEntity->getSkladniki());
+            $przepis->setWykonanie($przepisEntity->getWykonanie());
+            $przepis->setZrodlo($przepisEntity->getZrodlo());
+            $przepis->setUwagi($przepisEntity->getUwagi());
+            $przepis->setKategorie($przepisEntity->getKategorie());
         }
 
         $form = $this->createForm(PrzepisType::class, $przepis);
 
         $form->handleRequest($request);
 
-//        if ($form->isSubmitted() && $form->isValid()) {
-//
-//            $this->przepiRepository->update($przepis);
-//
-//            return $this->redirectToRoute('dodajprzepis');
-//        }
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->przepiRepository->update($przepis);
+            $przepisEntity = $this->przepiRepository->update($przepis);
             /** @var UploadedFile $file */
             $file = $przepis->getZdjecie();
 
-            $przepisEntity = $this->przepiRepository->save($przepis);
+            if ($file === null) {
+                $this->przepiRepository->updateEntity($przepisEntity);
+                return $this->redirectToRoute('dodajprzepis');
+            }
 
             //np: 1.jpg
             $filename = $przepisEntity->getId() . '.' . $file->guessExtension();
