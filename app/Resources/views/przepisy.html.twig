@@ -6,38 +6,6 @@
                     <a href="{{ path('przepisid', { 'id': przepis.id }) }}"><h2>{{ przepis.nazwa }}</h2></a>
                 </div>
                 <div class="row">
-                    <div class="dropdown" id="przycisk">
-                        <a href="#" class="dropdown-toggle btn btn-sm btn-default" data-toggle="dropdown" role="button"
-                           aria-haspopup="true" aria-expanded="false">Pokaż cały</a>
-                        <div class="dropdown-menu" id="przepis">
-                            <div class="row">
-                                <h3>Składniki</h3>
-                                <h5>{{ przepis.skladniki|raw }}</h5>
-                            </div>
-                            <div class="row">
-                                <h3>Wykonanie</h3>
-                                <h5>{{ przepis.wykonanie|raw }}</h5>
-                            </div>
-                            <div class="row">
-                                <h3>Źródło</h3>
-                                <h5>{{ przepis.zrodlo }}</h5>
-                            </div>
-                            <div class="row">
-                                <h3>Uwagi</h3>
-                                <h5>{{ przepis.uwagi|raw }}</h5>
-                            </div>
-                            <div class="row">
-                                <h3>Kategorie</h3>
-                                {% for kategoria in przepis.kategorie %}
-                                    <h5>
-                                        <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
-                                    </h5>
-                                {% endfor %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col-md-4">
                         <h3>Składniki</h3>
                         <h5>{{ przepis.skladniki|raw }}</h5>
@@ -45,7 +13,28 @@
                     <div class="col-md-6" id="zdjecie_przepisu">
                         <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" class="img-thumbnail">
                     </div>
+                    <div class="col-md-10">
+                        <h3>Wykonanie</h3>
+                        <h5>{{ przepis.wykonanie|raw }}</h5>
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Źródło</h3>
+                        <h5>{{ przepis.zrodlo }}</h5>
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Uwagi</h3>
+                        <h5>{{ przepis.uwagi|raw }}</h5>
+                    </div>
+                    <div class="col-md-10">
+                        <h3>Kategorie</h3>
+                        {% for kategoria in przepis.kategorie %}
+                            <h5>
+                                <a href="{{ path('kategoriaid', { 'id': kategoria.id }) }}">{{ kategoria.nazwa }}</a>
+                            </h5>
+                        {% endfor %}
+                    </div>
                 </div>
+
             </div>
         {% endfor %}
     </div>

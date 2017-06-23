@@ -111,6 +111,11 @@
     transition: all .2s ease-in-out;
 }
 
+#zdjecie_przepisu_min {
+    width: 100px;
+    text-align: center;
+}
+
 #dodajZdjecie .form-control {
     height: auto;
     padding: 5px;

@@ -19,7 +19,9 @@
                                 <div>{{ kategoria.nazwa }}</div>
                             {% endfor %}
                         </td>
-                        <td>{{ przepis.zdjecie }}</td>
+                        <td>
+                            <img src="{{ asset(zdjecia_przepisow ~ przepis.zdjecie) }}" id="zdjecie_przepisu_min">
+                        </td>
                         <td>
                             <form method="post" action="{{ path('edytujprzepis') }}">
                                 <input type="hidden" name="id" value="{{ przepis.id }}">
