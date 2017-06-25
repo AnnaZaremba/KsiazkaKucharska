@@ -9,7 +9,7 @@
     <div class="container">
         <div id="lista">
             <ul class="list-unstyled">
-                {% for przepis in przepisy|sort|reverse %}
+                {% for przepis in przepisy %}
                     <li>
                         <a href="{{ path('przepisid', { 'id': przepis.id }) }}"><h4>{{ przepis.nazwa }}</h4></a>
                     </li>

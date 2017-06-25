@@ -52,6 +52,7 @@ class PrzepiRepository extends DoctrineRepository
             ->setParameter('nazwa', '%' . $search->getNazwa() . '%')
             ->setParameter('skladniki', '%' . $search->getSkladniki() . '%')
             ->setParameter('wykonanie', '%' . $search->getWykonanie() . '%')
+            ->orderBy('p.nazwa', 'ASC')
             ->getQuery()
             ->getResult();
     }
