@@ -38,7 +38,7 @@ class DefaultController extends Controller
     {
         return [
             'przepisyNazwa' => $this->przepiRepository->getAllOrderByName(),
-            'przepisy' => $this->przepiRepository->getAll(),
+            'przepisy' => $this->przepiRepository->getLastFive(),
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
         ];
     }
