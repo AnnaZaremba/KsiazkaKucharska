@@ -27,6 +27,17 @@ class KategoriaRepository extends DoctrineRepository
             ->find($id);
     }
 
+    public function getLast()
+    {
+        return $this->getEntityManager()
+            ->getRepository('AppBundle:Przepis')
+            ->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult();
+    }
+
     protected function getEntityClassName()
     {
         return 'AppBundle:Kategoria';

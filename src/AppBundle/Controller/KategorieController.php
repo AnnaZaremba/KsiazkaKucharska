@@ -33,6 +33,7 @@ class KategorieController extends Controller
     {
         return [
             'kategoria' =>  $this->kategoriaRepository->getOneById($id),
+            'przepisKategoria' => $this->kategoriaRepository->getOneById($id)->getPrzepisy(),
             'przepisy' => $this->kategoriaRepository->getOneById($id)->getPrzepisy(),
             'kategorie' =>  $this->kategoriaRepository->getAllOrderByName(),
         ];
