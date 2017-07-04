@@ -30,24 +30,13 @@ class PrzepiRepository extends DoctrineRepository
             ->findBy([], ['createat' => 'DESC']);
     }
 
-    public function getLast()
+    public function getLast($maxResults)
     {
         return $this->getEntityManager()
             ->getRepository('AppBundle:Przepis')
             ->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC')
-            ->setMaxResults(1)
-            ->getQuery()
-            ->getResult();
-    }
-
-    public function getLastFive()
-    {
-        return $this->getEntityManager()
-            ->getRepository('AppBundle:Przepis')
-            ->createQueryBuilder('p')
-            ->orderBy('p.id', 'DESC')
-            ->setMaxResults(5)
+            ->setMaxResults($maxResults)
             ->getQuery()
             ->getResult();
     }
