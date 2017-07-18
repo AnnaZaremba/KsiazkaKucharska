@@ -29,7 +29,6 @@ class DefaultController extends Controller
         $this->przepiRepository = $przepiRepository;
     }
 
-
     /**
      * @Route("/", name="ksiazkakucharska")
      * @Template()
