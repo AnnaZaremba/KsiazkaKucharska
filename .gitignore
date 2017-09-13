@@ -17,3 +17,6 @@
 /web/bundles/
 .idea/
 /web/uploads/
+!/web/uploads/.gitkeep
+!/web/uploads/zdjecia_przepisow/.gitkeep
+
