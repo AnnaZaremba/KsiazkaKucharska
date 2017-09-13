@@ -68,15 +68,4 @@ class DefaultController extends Controller
             'kategorie' => $this->kategoriaRepository->getAllOrderByName()
         ];
     }
-
-    /**
-     * @Route("/okuchni", name="okuchni")
-     * @Template()
-     */
-    public function okuchniAction()
-    {
-        return [
-            'kategorie' => $this->kategoriaRepository->getAllOrderByName()
-        ];
-    }
 }
