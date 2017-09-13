@@ -176,6 +176,10 @@
     font-weight: bold;
 }
 
+#przepis h5 {
+    line-height: 20px;
+}
+
 #przepis .dropdown-menu {
 
     background-color: #eee;
