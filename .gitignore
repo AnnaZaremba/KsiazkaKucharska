@@ -16,7 +16,10 @@
 /vendor/
 /web/bundles/
 .idea/
-/web/uploads/
+!/web/uploads
+/web/uploads/*
 !/web/uploads/.gitkeep
+!/web/uploads/zdjecia_przepisow
+/web/uploads/zdjecia_przepisow/*
 !/web/uploads/zdjecia_przepisow/.gitkeep
 
