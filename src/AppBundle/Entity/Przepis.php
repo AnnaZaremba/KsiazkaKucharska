@@ -65,6 +65,11 @@ class Przepis
     private $zdjecie;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $uzytkownik;
+
+    /**
      * Przepis constructor.
      */
     public function __construct()
@@ -245,5 +250,21 @@ class Przepis
     public function setZdjecie($zdjecie)
     {
         $this->zdjecie = $zdjecie;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUzytkownik()
+    {
+        return $this->uzytkownik;
+    }
+
+    /**
+     * @param mixed $uzytkownik
+     */
+    public function setUzytkownik($uzytkownik)
+    {
+        $this->uzytkownik = $uzytkownik;
     }
 }

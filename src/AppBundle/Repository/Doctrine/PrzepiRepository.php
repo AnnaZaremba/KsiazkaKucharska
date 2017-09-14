@@ -66,7 +66,7 @@ class PrzepiRepository extends DoctrineRepository
         return 'AppBundle:Przepis';
     }
 
-    public function save(Przepis $przepis)
+    public function save(Przepis $przepis, $username)
     {
         $em = $this->getEntityManager();
 
@@ -77,6 +77,7 @@ class PrzepiRepository extends DoctrineRepository
         $przepisBaza->setWykonanie($przepis->getWykonanie());
         $przepisBaza->setZrodlo($przepis->getZrodlo());
         $przepisBaza->setUwagi($przepis->getUwagi());
+        $przepisBaza->setUzytkownik($username);
 
         /** @var Kategoria $kategoria */
         foreach ($przepis->getKategorie() as $kategoria) {

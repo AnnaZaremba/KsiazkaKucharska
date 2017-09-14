@@ -5,6 +5,7 @@ use AppBundle\Repository\Doctrine\KategoriaRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Security\Core\User\User;
 
 /**
  * @Route(service="app.login_controller")
@@ -28,8 +29,13 @@ class LoginController extends Controller
      */
     public function zalogowanyAction()
     {
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $username = $user->getUsername();
+
         return $this->render('@App/Login/zalogowany.html.twig', array(
             'kategorie' => $this->kategoriaRepository->getAllOrderByName(),
+            'username' => $username
         ));
     }
 }

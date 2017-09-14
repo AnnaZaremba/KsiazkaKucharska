@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\User\User;
 
 /**
  * @Route(service="app.dodaj_przepis_controller")
@@ -43,6 +44,11 @@ class DodajPrzepisController extends Controller
     public function dodajPrzepisAction(Request $request)
     {
         $przepis = new Przepis();
+
+        /** @var User $user */
+        $user = $this->get('security.token_storage')->getToken()->getUser();
+        $username = $user->getUsername();
+
         $form = $this->createForm(PrzepisType::class, $przepis);
         $form->handleRequest($request);
 
@@ -51,7 +57,7 @@ class DodajPrzepisController extends Controller
             /** @var UploadedFile $file */
             $file = $przepis->getZdjecie();
 
-            $przepisEntity = $this->przepiRepository->save($przepis);
+            $przepisEntity = $this->przepiRepository->save($przepis, $username);
 
             if ($file === null) {
                 return $this->redirectToRoute('dodajprzepis');

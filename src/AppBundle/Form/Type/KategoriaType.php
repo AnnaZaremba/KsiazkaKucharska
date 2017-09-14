@@ -14,6 +14,7 @@ class KategoriaType extends AbstractType
             ->add('id', HiddenType::class)
             ->add('nazwa', TextType::class)
             ->add('image', TextType::class)
+            ->add('uzytkownik', HiddenType::class )
         ;
     }
 }

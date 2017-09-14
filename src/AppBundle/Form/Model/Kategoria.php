@@ -19,6 +19,11 @@ class Kategoria
     private $image;
 
     /**
+     * @ORM\Column(type="string")
+     */
+    private $uzytkownik;
+
+    /**
      * @return string
      */
     public function getId()
@@ -66,4 +71,19 @@ class Kategoria
         $this->image = $image;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getUzytkownik()
+    {
+        return $this->uzytkownik;
+    }
+
+    /**
+     * @param mixed $uzytkownik
+     */
+    public function setUzytkownik($uzytkownik)
+    {
+        $this->uzytkownik = $uzytkownik;
+    }
 }
