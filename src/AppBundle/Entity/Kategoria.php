@@ -47,11 +47,6 @@ class Kategoria
     private $przepisy;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $uzytkownik;
-
-    /**
      * Kategoria constructor.
      */
     public function __construct()
@@ -165,21 +160,4 @@ class Kategoria
     {
         $this->przepisy->removeElement($przepis);
     }
-
-    /**
-     * @return mixed
-     */
-    public function getUzytkownik()
-    {
-        return $this->uzytkownik;
-    }
-
-    /**
-     * @param mixed $uzytkownik
-     */
-    public function setUzytkownik($uzytkownik)
-    {
-        $this->uzytkownik = $uzytkownik;
-    }
-
 }
